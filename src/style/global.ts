@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
         --brand2: #5126ea;
         --brand3: #b0a6f0;
         --brand4: #edeafd;
-        
+
         --grey0: #0b0d0d;
         --grey1: #212529;
         --grey2: #495057;
@@ -45,9 +45,9 @@ const GlobalStyle = createGlobalStyle`
         --random9: #153d2e;
         --random10: #6100ff;
         --random11: #5700e3;
-        --random12: #30007d;  
+        --random12: #30007d;
     }
-    
+
     body {
         background: var(--whiteFixed);
     }
