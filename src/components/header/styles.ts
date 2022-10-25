@@ -27,6 +27,7 @@ export const Container = styled.div<Props>`
     align-items: center;
     width: 100%;
     border-bottom: 2px solid #dee2e6;
+    padding: 1rem 1rem;
     
     .icon {
       width: 35px;
@@ -44,6 +45,7 @@ export const Container = styled.div<Props>`
       display: ${(props) => (props.isOpen ? "block" : "none")};
       width: 100%;
       border-bottom: 2px solid #dee2e6;
+      padding: 0 1rem;
     }
   }
   
@@ -52,13 +54,15 @@ export const Container = styled.div<Props>`
     border-bottom: 2px solid #dee2e6;
     .container-img {
       border-bottom: none;
+      margin-left: 25px;
+      width: 35%;
       .icon {
         display: none;
       }
     }
     .container-nav {
       display: flex;
-      width: 50%;
+      width: 65%;
       nav {
         display: flex;
         justify-content: space-around;
@@ -93,6 +97,8 @@ export const Item = styled.div<Props>`
 export const UserBox = styled.div<Props>`
   display: ${(props) => (props.isOpen ? "flex" : "none")};
   flex-direction: column;
+  width: 100%;
+  margin: 10px 0;
   
   h5 {
     font-family: "Inter";
@@ -101,30 +107,49 @@ export const UserBox = styled.div<Props>`
     font-size: 16px;
     line-height: 28px;
   }
+  .user_box-default{
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
   .user_box-button {
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    button {
-      width: 80%;
-      max-width: 200px;
-    }
+
   }
   .user_box-div {
     display: flex;
     align-items: center;
-    justify-content: center;
     cursor: pointer;
+    justify-content: start;
+    margin-top: 5px;
   }
 
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     height: 100%;
     border-left: solid 2px #dee2e6;
+    margin: 0;
+    min-height: 80px;
+
+    .user_box-default{
+      width: 100%;
+      justify-content: space-around;
+      flex-direction: row;
+      padding: 0;
+    }
+
+    .user_box-div{
+      margin-top: 0px;
+    }
   }
+
   `;
 
 export const UserIcon = styled.div`
