@@ -4,6 +4,7 @@ import Menu from "@mui/material/Menu";
 import React from "react";
 import MenuItem from "@mui/material/MenuItem";
 import { BiMenu, BiX } from "react-icons/bi";
+import Button from "../Button";
 
 const Header = () => {
   ///Desktop dropdown variables
@@ -11,12 +12,16 @@ const Header = () => {
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
+    console.log(event.currentTarget)
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
   ///Mobile dropdown variables
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+
+  ///Autentication States Simulation
+  const [isDefault] = React.useState<boolean>(true);
 
   return (
     <Container isOpen={isOpen}>
@@ -29,49 +34,57 @@ const Header = () => {
         )}
       </div>
       <div className="container-nav">
-        
-          <nav>
-            <Item isOpen={isOpen}>
-              <a>Carros</a>
-            </Item>
-            <Item isOpen={isOpen}>
-              <a>Motos</a>
-            </Item>
-            <Item isOpen={isOpen}>
-              <a>Leilão</a>
-            </Item>
-          </nav>
-          <UserBox isOpen={isOpen}>
-            {/* <Item isOpen={isOpen}>
-              <a>Fazer Login</a>
-            </Item>
-            <div className="user_box-button">
-              <button>Cadastrar</button>
-            </div> */}
-            
-                    <div
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                    className="user_box-div"
-                    >
-                    <UserIcon>SL</UserIcon>
-                    <h5>Samuel Leão</h5>
-                    </div>
-                    <Menu id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}>
-                    <MenuItem>Editar perfil</MenuItem>
-                    <MenuItem>Editar endereço</MenuItem>
-                    <MenuItem>Minhas compras</MenuItem>
-                    <MenuItem>Sair</MenuItem>
-                    </Menu>
-               
-          </UserBox>
-        
+        <nav>
+          <Item isOpen={isOpen}>
+            <a>Carros</a>
+          </Item>
+          <Item isOpen={isOpen}>
+            <a>Motos</a>
+          </Item>
+          <Item isOpen={isOpen}>
+            <a>Leilão</a>
+          </Item>
+        </nav>
+        <UserBox isOpen={isOpen}>
+          {isDefault ? (
+            <div className="user_box-default">
+              <Item isOpen={isOpen}>
+                <a>Fazer Login</a>
+              </Item>
+              <div className="user_box-button">
+                <Button borderC="--grey4" backgroundC="--whiteFixed" fontC="--grey0" width="146px" height="50px">Cadastrar</Button>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div
+                id="basic-button"
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+                className="user_box-div"
+              >
+                <UserIcon>SL</UserIcon>
+                <h5>Samuel Leão</h5>
+              </div>
+              <Menu id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}>
+                <MenuItem>Editar perfil</MenuItem>
+                <MenuItem>Editar endereço</MenuItem>
+                <MenuItem>Minhas compras</MenuItem>
+                <MenuItem>Sair</MenuItem>
+              </Menu>
+            </>
+          )}
+
+
+
+
+        </UserBox>
+
       </div>
     </Container>
   );
