@@ -55,10 +55,10 @@ export const StyledButton = styled.button<Props>`
   max-width: ${(props) => handleMaxWidth(props)};
   height: ${(props) => handleHeight(props)};
   max-height: ${(props) => handleMaxHeight(props)};
-  margin-left: 20px;
-  margin-top: 20px;
-  border-color: ${(props) => handleBorderColors(props)};
+  border: 1px solid ${(props) => handleBorderColors(props)};
   border-radius: 4px;
+  font-family: var(--inter);
+  font-weight: 600;
   &:hover {
     background-color: ${(props) => handleBackGroundHover(props)};
     color: ${(props) => handleFontHover(props)};

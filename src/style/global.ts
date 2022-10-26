@@ -5,7 +5,10 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         outline:0;
+        border: 0;
         box-sizing:border-box;
+        vertical-align: baseline;
+        font-size: 100%;
     }
 
     :root{
@@ -46,6 +49,8 @@ const GlobalStyle = createGlobalStyle`
         --random10: #6100ff;
         --random11: #5700e3;
         --random12: #30007d;
+        --inter: 'Inter', sans-serif;
+        --lexend: 'Lexend', sans-serif;
     }
 
     body {
