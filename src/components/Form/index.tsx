@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { UseFormRegister, FieldValues } from "react-hook-form";
+import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
 import Input from "../Input";
 import Button from "../Button";
 import { StyledForm, TitleForm, DetailsBoxOne, DetailsBoxTwo } from "./styles";
@@ -10,24 +10,26 @@ interface IFormProps {
   name: string;
 }
 
-interface ILogin {
+export interface IUseFormProps {
   name: string;
   password: string;
-  register: UseFormRegister<FieldValues>;
+  test: string;
 }
 
 const Form = ({ name }: IFormProps) => {
   const loginSchema = yup.object().shape({
     name: yup
       .string()
-      .required("Required Field!")
-      .min(4, "Minimum 4 charachters!")
-      .max(20, "Maximun 20 characters"),
-    password: yup.string().required("Required Field!"),
-    //   .matches(
-    //     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-    //     "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character!"
-    //   ),
+      .required("Campo obrigatório")
+      .min(4, "Mínimo 4 caracteres")
+      .max(20, "Máximo 20 caracteres"),
+    password: yup
+      .string()
+      .required("Campo obrigatório")
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        "Mínimo 8 caracteres, um maiúsculo, um número e um caracter especial"
+      ),
   });
 
   const testSchema = yup.object().shape({
@@ -38,13 +40,17 @@ const Form = ({ name }: IFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FieldValues>({
+  } = useForm<IUseFormProps>({
     resolver: yupResolver(
       name.toLowerCase() === "login" ? loginSchema : testSchema
     ),
   });
 
   const handleLogin = (data: any) => {
+    console.log(data);
+  };
+
+  const handleTest = (data: any) => {
     console.log(data);
   };
 
@@ -61,15 +67,18 @@ const Form = ({ name }: IFormProps) => {
             placeholder={"Digitar usuário"}
             name={"name"}
             register={register}
+            errors={errors.name}
             width={"152px"}
             height={"60px"}
           />
+
           <Input
             type={"password"}
             description={"Senha"}
             placeholder={"Digitar senha"}
             name={"password"}
             register={register}
+            errors={errors.password}
             width={"152px"}
             height={"60px"}
           />
@@ -106,13 +115,14 @@ const Form = ({ name }: IFormProps) => {
 
     case "test":
       return (
-        <StyledForm onSubmit={handleSubmit(handleLogin)}>
+        <StyledForm onSubmit={handleSubmit(handleTest)}>
           <Input
             type={"text"}
             description={"Teste"}
             placeholder={"Digitar Teste"}
             name={"test"}
             register={register}
+            errors={errors.test}
             width={"152px"}
             height={"60px"}
           />

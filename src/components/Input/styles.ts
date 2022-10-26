@@ -42,3 +42,9 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledLabel = styled.label``;
+
+export const StyledSpan = styled.span`
+  font-size: 11px;
+  text-decoration: underline;
+  color: var(--alert1);
+`;

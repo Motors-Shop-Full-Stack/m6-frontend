@@ -49,6 +49,7 @@ const GlobalStyle = createGlobalStyle`
         --random10: #6100ff;
         --random11: #5700e3;
         --random12: #30007d;
+
         --inter: 'Inter', sans-serif;
         --lexend: 'Lexend', sans-serif;
     }
