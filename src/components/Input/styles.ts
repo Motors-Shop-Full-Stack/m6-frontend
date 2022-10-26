@@ -31,17 +31,17 @@ export const InputContainer = styled.div<Props>`
     padding-left: 4px;
     font-size: 16px;
   }
-  label {
-    color: var(--grey1);
-    padding-bottom: 3.5px;
-  }
 `;
 
 export const StyledInput = styled.input`
   display: flex;
 `;
 
-export const StyledLabel = styled.label``;
+export const StyledLabel = styled.label`
+  color: var(--grey1);
+  padding-bottom: 3.5px;
+  font-weight: 500;
+`;
 
 export const StyledSpan = styled.span`
   font-size: 11px;
