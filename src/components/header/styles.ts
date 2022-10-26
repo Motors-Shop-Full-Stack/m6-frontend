@@ -55,14 +55,14 @@ export const Container = styled.div<Props>`
     .container-img {
       border-bottom: none;
       margin-left: 25px;
-      width: 35%;
+      width: 30%;
       .icon {
         display: none;
       }
     }
     .container-nav {
       display: flex;
-      width: 65%;
+      width: 70%;
       nav {
         display: flex;
         justify-content: space-around;
@@ -74,6 +74,14 @@ export const Container = styled.div<Props>`
     }
     .container-icon {
       display: none;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-img {
+      width: 45%;
+    }
+    .container-nav {
+      width: 55%;
     }
   }
 `;
@@ -148,6 +156,9 @@ export const UserBox = styled.div<Props>`
     .user_box-div{
       margin-top: 0px;
     }
+  }
+  @media (min-width: 1024px) {
+    width: 80%;
   }
 
   `;

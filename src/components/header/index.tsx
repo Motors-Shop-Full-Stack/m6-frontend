@@ -21,7 +21,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   ///Autentication States Simulation
-  const [isDefault] = React.useState<boolean>(true);
+  const [isDefault] = React.useState<boolean>(false);
 
   return (
     <Container isOpen={isOpen}>
@@ -52,7 +52,7 @@ const Header = () => {
                 <a>Fazer Login</a>
               </Item>
               <div className="user_box-button">
-                <Button borderC="--grey4" backgroundC="--whiteFixed" fontC="--grey0" width="146px" height="50px">Cadastrar</Button>
+                <Button borderC="--grey4" backgroundC="--whiteFixed" fontC="--grey0" width="100px" height="50px">Cadastrar</Button>
               </div>
             </div>
           ) : (
