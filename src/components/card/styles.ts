@@ -46,6 +46,10 @@ export const ImageBox = styled.div`
 `;
 
 export const TextBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 90px;
   h5 {
     //styleName: Heading/Heading-7-600;
     font-family: "Lexend", sans-serif;
@@ -70,6 +74,7 @@ export const ProfileBox = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin: 7px 0px;
 
   div {
     display: flex;
@@ -156,3 +161,9 @@ export const InfoDetail = styled.div`
 
   color: #4529e6;
 `;
+
+export const AdminBox = styled.div`
+display: flex;
+gap: 10px;
+margin: 10px 0;
+`
