@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import test from "./test.png";
 
+interface Props {
+  isAdmin: boolean
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,7 +37,7 @@ export const ContentBox = styled.div`
     height: 25%;
     div {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       padding: 0 10px;
       width: 123px;
@@ -141,9 +145,9 @@ export const ContentBox = styled.div`
   }
 `;
 
-export const AuctionBox = styled.div`
+export const AuctionBox = styled.div<Props>`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${(props) => (props.isAdmin ? "flex-start" : "space-between")};
   align-items: center;
   padding: 24px 36px;
   height: 61px;
@@ -156,6 +160,7 @@ export const AuctionBox = styled.div`
   line-height: 0px;
   color: #ffffff;
   border-radius: 0 0 4px 4px;
+  gap: 15px;
   .icon {
     cursor: pointer;
   }

@@ -1,8 +1,13 @@
 import { Container, AuctionBox, ContentBox, DetailBox } from "./styles";
 import { HiArrowRight } from "react-icons/hi";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import React from "react";
+import Button from "../Button";
 
 const AuctionCard = () => {
+  ///Autentication States Simulation
+  const [isAdmin] = React.useState<boolean>(false);
+
   return (
     <Container>
       <ContentBox>
@@ -18,10 +23,13 @@ const AuctionCard = () => {
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem...
           </p>
-          <div className="content_profile-box">
-            <div className="profile-box_initial">R</div>
-            <h5>Rodrigo Tavares</h5>
-          </div>
+          {isAdmin ? null : (
+            <div className="content_profile-box">
+              <div className="profile-box_initial">R</div>
+              <h5>Rodrigo Tavares</h5>
+            </div>
+          )}
+
           <div className="content_infos-box">
             <div className="info-detail">
               <DetailBox>2013</DetailBox>
@@ -33,9 +41,19 @@ const AuctionCard = () => {
           </div>
         </div>
       </ContentBox>
-      <AuctionBox>
-        <h5>Acessar página do leilão</h5>
-        <HiArrowRight className="icon" />
+      <AuctionBox isAdmin={isAdmin}>
+        {isAdmin ? (
+          <>
+          <Button borderC="--whiteFixed" backgroundC="--brand1" fontC="--whiteFixed" width="80px" height="50px">Editar</Button>
+          <Button borderC="--whiteFixed" backgroundC="--brand1" fontC="--whiteFixed" width="100px" height="50px">Ver como</Button>
+          </>
+        ) : (
+          <>
+            <h5>Acessar página do leilão</h5>
+            <HiArrowRight className="icon" />
+          </>
+        )}
+
       </AuctionBox>
     </Container>
   );
