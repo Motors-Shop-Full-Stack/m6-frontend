@@ -5,8 +5,8 @@ interface Props {
   backgroundC: string;
   fontC: string;
   width: string;
-  maxWd?: string;
   height: string;
+  maxWd?: string;
   maxHt?: string;
 }
 
@@ -63,6 +63,11 @@ export const StyledButton = styled.button<Props>`
     background-color: ${(props) => handleBackGroundHover(props)};
     color: ${(props) => handleFontHover(props)};
   }
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 0px;
 `;
 
 // const handleFontColors = (props: Props) => {
