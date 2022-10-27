@@ -1,6 +1,6 @@
-import "./App.css";
-import Button from "./components/Button";
+import Form from "./components/Form";
 import GlobalStyle from "./style/global";
+import React from "react";
 
 function App() {
   return (
@@ -9,7 +9,10 @@ function App() {
 
       <div>
         <h2>TCM m6</h2>
-        <Button
+
+        <Form name="login" />
+
+        {/* <Button
           borderC={"--sucess3"}
           backgroundC={"--brand1"}
           fontC={"--whiteFixed"}
@@ -17,7 +20,7 @@ function App() {
           height={"40px"}
         >
           Text Test
-        </Button>
+        </Button> */}
       </div>
     </>
   );
