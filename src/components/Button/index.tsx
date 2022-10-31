@@ -3,6 +3,7 @@ import { StyledButton } from "./styles";
 
 interface IButtonProps {
   children?: ReactNode;
+  type?: "button" | "submit" | "reset" | undefined;
   backgroundC: string;
   fontC: string;
   borderC: string;
@@ -10,10 +11,12 @@ interface IButtonProps {
   maxWd?: string;
   height: string;
   maxHt?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button = ({
   children,
+  type,
   borderC,
   backgroundC,
   fontC,
@@ -21,10 +24,12 @@ const Button = ({
   maxWd,
   height,
   maxHt,
+  onClick,
   ...rest
 }: IButtonProps): JSX.Element => {
   return (
     <StyledButton
+      type={type}
       borderC={borderC}
       backgroundC={backgroundC}
       fontC={fontC}
@@ -32,6 +37,7 @@ const Button = ({
       maxWd={maxWd}
       height={height}
       maxHt={maxHt}
+      onClick={onClick}
       {...rest}
     >
       {children}
