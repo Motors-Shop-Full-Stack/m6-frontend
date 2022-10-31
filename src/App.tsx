@@ -1,6 +1,6 @@
+import Footer from "./components/Footer";
 import Form from "./components/Form";
 import GlobalStyle from "./style/global";
-import React from "react";
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
         >
           Text Test
         </Button> */}
+        <Footer />
       </div>
     </>
   );
