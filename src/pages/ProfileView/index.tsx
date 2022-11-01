@@ -3,12 +3,16 @@ import Header from "../../components/Header";
 import { GradientContainer, UserBox, UserType } from "./styles";
 
 const ProfileView = () => {
+
+  const name = "Samuel de Oliveira das Neves Leão"
+  let d = name.split(' ')[0][0] + name.split(' ')[name.split(' ').length - 1][0]
+
   return (
     <>
       <Header></Header>
       <GradientContainer>
         <UserBox>
-          <div className="userbox-avatar">SL</div>
+          <div className="userbox-avatar">{d}</div>
           <div className="userbox-info">
             <h5>Samuel Leão</h5>
             <UserType>Anunciante</UserType>
