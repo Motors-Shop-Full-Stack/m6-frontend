@@ -1,10 +1,10 @@
-import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
 import Input from "../Input";
 import Button from "../Button";
 import { StyledForm, TitleForm, DetailsBoxOne, DetailsBoxTwo } from "./styles";
+import { useModal } from "../../providers/modal";
 
 interface IFormProps {
   name: string;
@@ -17,6 +17,8 @@ export interface IUseFormProps {
 }
 
 const Form = ({ name }: IFormProps) => {
+  const { handleSecondModal } = useModal();
+
   const loginSchema = yup.object().shape({
     name: yup
       .string()
