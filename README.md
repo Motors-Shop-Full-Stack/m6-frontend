@@ -1,7 +1,5 @@
 # motors shop
 
-***
-
 ## Descrição
 
 ### O que é o motors shop?
@@ -18,12 +16,14 @@ O projeto foi desenvolvido utilizando ReactJS e Typescript. A estilização foi 
 
 >### Preparando o ambiente local para rodar a aplicação
 
->#### Requisitos: Gerenciador de pacotes instalado (yarn/NPM)
+>##### Requisitos: Gerenciador de pacotes instalado (yarn/NPM) e NODE
 
 1. Clonar o repositório: `git clone git@github.com:m6-project/m6-frontend.git`
 
-2. Instalar dependências: `yarn install`
+2. Instalar dependências: `yarn install | npm intall`
 
-3. Iniciar a aplicação: `yarn start`
+3. Iniciar a aplicação: `yarn start | npm start`
+   
+4. Visitar aplicaçãp: `localhost:3000`
    
 Pronto, sua aplicação já deve estar pronta para ser utilizada.
