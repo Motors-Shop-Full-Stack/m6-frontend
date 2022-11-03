@@ -4,14 +4,16 @@ import Button from "./components/Button";
 import GlobalStyle from "./style/global";
 import { useModal } from "./providers/modal";
 import React from "react";
+import { MainDiv } from "./components/Form/styles";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <div>
+      <MainDiv>
         <h2>TCM m6</h2>
-      </div>
+        <Form name="createAd" />
+      </MainDiv>
     </>
   );
 }
