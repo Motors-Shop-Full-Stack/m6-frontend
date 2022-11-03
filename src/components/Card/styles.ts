@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 312px;
   max-width: 312px;
 `;
 
@@ -13,7 +14,6 @@ export const ImageBox = styled.div`
 
   .tag {
     transition: opacity 0.5s;
-    position: absolute;
     margin: 15px 0 0 15px;
     padding: 0px 8px;
     background: #4529E6;
@@ -23,6 +23,7 @@ export const ImageBox = styled.div`
     font-size: 14px;
     line-height: 24px;
     color: #FFFFFF;
+    width: 50px;
   }
 
   :hover {
@@ -141,9 +142,6 @@ export const InfoDetail = styled.div`
   justify-content: center;
   align-items: center;
   padding: 4px 8px;
-
-  width: 50px;
-  height: 32px;
 
   /* Brand/brand4 */
 

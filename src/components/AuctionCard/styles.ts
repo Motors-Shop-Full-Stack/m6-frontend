@@ -8,12 +8,12 @@ interface Props {
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 328px;
-  height: 496px;
+  min-width: 328px;
+  min-height: 496px;
 
   @media(min-width: 768px){
-    width: 735px;
-    height: 326px;
+    min-width: 735px;
+    min-height: 326px;
   }
 `;
 
@@ -150,7 +150,7 @@ export const AuctionBox = styled.div<Props>`
   justify-content: ${(props) => (props.isAdmin ? "flex-start" : "space-between")};
   align-items: center;
   padding: 24px 36px;
-  height: 61px;
+  min-height: 61px;
   width: 100%;
   background: #4529e6;
   font-family: "Inter";
