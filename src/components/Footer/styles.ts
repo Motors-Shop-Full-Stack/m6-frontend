@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.div`
   background-color: var(--grey0);
-  position: fixed;
   bottom: 0;
   width: 100%;
   display: flex;
