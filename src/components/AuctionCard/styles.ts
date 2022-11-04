@@ -5,6 +5,10 @@ interface Props {
   isAdmin: boolean
 }
 
+interface Props2 {
+  url: string
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -17,7 +21,7 @@ export const Container = styled.div`
   }
 `;
 
-export const ContentBox = styled.div`
+export const ContentBox = styled.div<Props2>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,8 +30,8 @@ export const ContentBox = styled.div`
   height: 435px;
   padding: 24px 36px;
   border-radius: 4px 4px 0 0;
-  background-image: url(${test}); /* fallback */
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%), url(${test});
+  background-image: url(${props => props.url}); /* fallback */
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%), url(${props => props.url});
   background-size: 100% 100%;
 
   .content-timer {
