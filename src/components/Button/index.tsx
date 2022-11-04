@@ -11,6 +11,8 @@ interface IButtonProps {
   maxWd?: string;
   height: string;
   maxHt?: string;
+  value?: string;
+  name?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -24,12 +26,15 @@ const Button = ({
   maxWd,
   height,
   maxHt,
+  value,
+  name,
   onClick,
   ...rest
 }: IButtonProps): JSX.Element => {
   return (
     <StyledButton
       type={type}
+      value={value}
       borderC={borderC}
       backgroundC={backgroundC}
       fontC={fontC}

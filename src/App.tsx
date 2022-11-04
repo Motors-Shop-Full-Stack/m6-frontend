@@ -5,7 +5,6 @@ import Button from "./components/Button";
 import GlobalStyle from "./style/global";
 import Routes from "./routes/index";
 
-
 function App() {
   return (
     <>
