@@ -1,16 +1,16 @@
 export interface ICardProps {
-    data: IAnnouncement
+  data: IAnnouncement;
 }
 
 export interface IAnnouncement {
-    id: number
-    announcement_type: string
-    announcement_cover: string
-    category: string
-    description: string
-    is_active: boolean
-    km: number
-    price: string
-    title: string
-    fabrication_year: number
+  id: number;
+  announceType: string;
+  announceCover: string;
+  category: string;
+  description: string;
+  is_active: boolean;
+  km: number;
+  price: string;
+  title: string;
+  fabricationYear: number;
 }

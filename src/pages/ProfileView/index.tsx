@@ -1,14 +1,22 @@
 import Button from "../../components/Button";
 import Header from "../../components/Header";
+import Modal from "../../components/Modal";
 import { GradientContainer, UserBox, UserType } from "./styles";
+import { useModal } from "../../providers/modal";
+import Form from "../../components/Form";
 
 const ProfileView = () => {
+  const { handleFirstModal } = useModal();
 
-  const name = "Samuel de Oliveira das Neves Leão"
-  let d = name.split(' ')[0][0] + name.split(' ')[name.split(' ').length - 1][0]
+  const name = "Samuel de Oliveira das Neves Leão";
+  let d =
+    name.split(" ")[0][0] + name.split(" ")[name.split(" ").length - 1][0];
 
   return (
     <>
+      <Modal name="first" pTop="6%" pLeft="35%">
+        <Form name="createad" />
+      </Modal>
       <Header></Header>
       <GradientContainer>
         <UserBox>
@@ -31,6 +39,7 @@ const ProfileView = () => {
               fontC="--brand1"
               width="100px"
               height="50px"
+              onClick={() => handleFirstModal()}
             >
               Cadastrar
             </Button>

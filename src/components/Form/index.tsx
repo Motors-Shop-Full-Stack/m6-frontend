@@ -18,6 +18,7 @@ import {
   FormAdInputManyBoxTwo,
 } from "./styles";
 import { useModal } from "../../providers/modal";
+import { useApi } from "../../providers/api";
 import { useState } from "react";
 
 interface IFormProps {
@@ -38,6 +39,7 @@ export interface IUseFormProps {
 
 const Form = ({ name }: IFormProps) => {
   const { handleSecondModal, handleFirstModal } = useModal();
+  const { homeData, handleHomeData } = useApi();
 
   const [announceType, setAnnounceType] = useState<string>("sale");
   const handleAnnounceType = (e: any) => {
@@ -109,14 +111,14 @@ const Form = ({ name }: IFormProps) => {
     const requestObj = {
       announceType: announceType,
       title: data.title,
-      fabricationYear: data.year,
-      km: data.km,
+      fabricationYear: parseInt(data.year),
+      km: parseInt(data.km),
       price: data.price,
       description: data.description,
       category: announceCategory,
       announceCover: data.announceCover,
     };
-    console.log(requestObj);
+    handleHomeData(requestObj);
   };
 
   switch (name.toLowerCase()) {

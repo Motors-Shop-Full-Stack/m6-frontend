@@ -5,13 +5,13 @@ import React from "react";
 import Button from "../Button";
 import { ICardProps } from "../../pages/Home/interfaces";
 
-const AuctionCard = ({data}: ICardProps) => {
+const AuctionCard = ({ data }: ICardProps) => {
   ///Autentication States Simulation
   const [isAdmin] = React.useState<boolean>(false);
 
   return (
     <Container>
-      <ContentBox url={data.announcement_cover}>
+      <ContentBox url={data.announceCover}>
         <div className="content-timer">
           <div>
             <AiOutlineClockCircle className="clock-icon" />
@@ -20,9 +20,7 @@ const AuctionCard = ({data}: ICardProps) => {
         </div>
         <div className="content-text">
           <h1>{data.title}</h1>
-          <p>
-            {data.description}
-          </p>
+          <p>{data.description}</p>
           {isAdmin ? null : (
             <div className="content_profile-box">
               <div className="profile-box_initial">R</div>
@@ -32,7 +30,7 @@ const AuctionCard = ({data}: ICardProps) => {
 
           <div className="content_infos-box">
             <div className="info-detail">
-              <DetailBox>{data.fabrication_year.toString()}</DetailBox>
+              <DetailBox>{data.fabricationYear.toString()}</DetailBox>
               <DetailBox>{data.km}KM</DetailBox>
             </div>
             <div className="info-price">
@@ -44,8 +42,24 @@ const AuctionCard = ({data}: ICardProps) => {
       <AuctionBox isAdmin={isAdmin}>
         {isAdmin ? (
           <>
-          <Button borderC="--whiteFixed" backgroundC="--brand1" fontC="--whiteFixed" width="80px" height="50px">Editar</Button>
-          <Button borderC="--whiteFixed" backgroundC="--brand1" fontC="--whiteFixed" width="100px" height="50px">Ver como</Button>
+            <Button
+              borderC="--whiteFixed"
+              backgroundC="--brand1"
+              fontC="--whiteFixed"
+              width="80px"
+              height="50px"
+            >
+              Editar
+            </Button>
+            <Button
+              borderC="--whiteFixed"
+              backgroundC="--brand1"
+              fontC="--whiteFixed"
+              width="100px"
+              height="50px"
+            >
+              Ver como
+            </Button>
           </>
         ) : (
           <>
@@ -53,7 +67,6 @@ const AuctionCard = ({data}: ICardProps) => {
             <HiArrowRight className="icon" />
           </>
         )}
-
       </AuctionBox>
     </Container>
   );

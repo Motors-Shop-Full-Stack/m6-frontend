@@ -37,7 +37,8 @@ export const ModalContainerOne = styled.div<Props>`
   right: ${(props) => handlePositionRight(props)};
   width: max-content;
   height: max-content;
-  border: 1px solid #000;
+  border-radius: 4px;
+  /* border: 1px solid #000; */
   background-color: var(--grey10);
 `;
 

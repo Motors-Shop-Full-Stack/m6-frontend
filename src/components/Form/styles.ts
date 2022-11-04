@@ -68,10 +68,11 @@ export const FormAd = styled.form`
   background-color: var(--grey10);
   border-radius: 4px;
   max-width: 350px;
-  width: 70%;
+  width: 75%;
   height: 620px;
   @media (min-width: 425px) {
     height: 560px;
+    width: 100%;
   }
 `;
 
