@@ -4,13 +4,13 @@ export interface ICardProps {
 
 export interface IAnnouncement {
     id: number
-    announcement_type: string
-    announcement_cover: string
+    announceType: string
+    announceCover: string
     category: string
     description: string
     is_active: boolean
     km: number
     price: string
     title: string
-    fabrication_year: number
+    fabricationYear: number
 }
