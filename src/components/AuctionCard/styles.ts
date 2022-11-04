@@ -176,7 +176,6 @@ export const DetailBox = styled.div`
   justify-content: center;
   align-items: center;
   padding: 4px 8px;
-  width: 50px;
   height: 32px;
   background: var(--brand4);
   border-radius: 4px;
