@@ -17,6 +17,7 @@ const Home = () => {
             then((response) => setAnnouncements(response.data))
     }, []);
 
+
     return (
         <>
             <Header />
@@ -63,21 +64,21 @@ const Home = () => {
             <ListsWrapper>
                 <ProductList gap="10px" title='Leilão' id="auction">
                     {!!announcements && announcements.map(item => {
-                        if (item.announcement_type === "auction") {
+                        if (item.announceType === "auction") {
                             return <AuctionCard key={item.id} data={item}></AuctionCard>
                         }
                     })}
                 </ProductList>
                 <ProductList gap="20px" title='Carros' id="cars">
                     {!!announcements && announcements.map(item => {
-                        if (item.announcement_type === "sale" && item.category === "car") {
+                        if (item.announceType === "sale" && item.category === "car") {
                             return <Card key={item.id} data={item}></Card>
                         }
                     })}
                 </ProductList>
                 <ProductList gap="20px" title='Motos' id="bikes">
                     {!!announcements && announcements.map(item => {
-                        if (item.announcement_type === "sale" && item.category === "motorcycle") {
+                        if (item.announceType === "sale" && item.category === "motorcycle") {
                             return <Card key={item.id} data={item}></Card>
                         }
                     })}

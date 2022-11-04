@@ -11,7 +11,7 @@ const AuctionCard = ({data}: ICardProps) => {
 
   return (
     <Container>
-      <ContentBox url={data.announcement_cover}>
+      <ContentBox url={data.announceCover}>
         <div className="content-timer">
           <div>
             <AiOutlineClockCircle className="clock-icon" />
@@ -32,7 +32,7 @@ const AuctionCard = ({data}: ICardProps) => {
 
           <div className="content_infos-box">
             <div className="info-detail">
-              <DetailBox>{data.fabrication_year.toString()}</DetailBox>
+              <DetailBox>{data.fabricationYear.toString()}</DetailBox>
               <DetailBox>{data.km}KM</DetailBox>
             </div>
             <div className="info-price">

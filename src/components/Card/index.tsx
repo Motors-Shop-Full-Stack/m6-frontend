@@ -10,13 +10,13 @@ const Card = ({ data }: ICardProps) => {
 
     return (
         <Container>
-            <ImageBox url={data.announcement_cover}>
+            <ImageBox url={data.announceCover}>
                 {data.is_active ? (
                     <div className="tag">Ativo</div>
                 ) : (
                     <div className="tag">Inativo</div>
                 )}
-                <img src={data.announcement_cover}></img>
+                <img src={data.announceCover}></img>
             </ImageBox>
             <TextBox>
                 <h5>{data.title}</h5>
@@ -32,7 +32,7 @@ const Card = ({ data }: ICardProps) => {
             <InfoBox>
                 <div className="info-1">
                     <InfoDetail>{data.km} KM</InfoDetail>
-                    <InfoDetail>{data.fabrication_year.toString()}</InfoDetail>
+                    <InfoDetail>{data.fabricationYear.toString()}</InfoDetail>
                 </div>
                 <div>
                     <h5>R$ {data.price}</h5>
