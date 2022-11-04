@@ -115,7 +115,6 @@ const Form = ({ name }: IFormProps) => {
       description: data.description,
       category: announceCategory,
       announceCover: data.announceCover,
-      url: data.url,
     };
     console.log(requestObj);
   };
