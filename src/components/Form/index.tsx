@@ -109,7 +109,7 @@ const Form = ({ name }: IFormProps) => {
     const requestObj = {
       announceType: announceType,
       title: data.title,
-      year: data.year,
+      fabricationYear: data.year,
       km: data.km,
       price: data.price,
       description: data.description,
