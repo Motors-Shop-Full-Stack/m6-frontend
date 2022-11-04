@@ -70,14 +70,14 @@ const Home = () => {
                 </ProductList>
                 <ProductList gap="20px" title='Carros' id="cars">
                     {!!announcements && announcements.map(item => {
-                        if (item.announcement_type === "sell" && item.category === "car") {
+                        if (item.announcement_type === "sale" && item.category === "car") {
                             return <Card key={item.id} data={item}></Card>
                         }
                     })}
                 </ProductList>
                 <ProductList gap="20px" title='Motos' id="bikes">
                     {!!announcements && announcements.map(item => {
-                        if (item.announcement_type === "sell" && item.category === "bike") {
+                        if (item.announcement_type === "sale" && item.category === "motorcycle") {
                             return <Card key={item.id} data={item}></Card>
                         }
                     })}
