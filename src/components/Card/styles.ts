@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Props {
+  url: string
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -7,9 +11,10 @@ export const Container = styled.div`
   max-width: 312px;
 `;
 
-export const ImageBox = styled.div`
+export const ImageBox = styled.div<Props>`
   background: #e9ecef;
   border: 2px solid transparent;
+  height: 200px;
   /* Grey Scale/grey-7 */
 
   .tag {
@@ -37,12 +42,13 @@ export const ImageBox = styled.div`
 
   img {
     width: 100%;
-    object-fit: cover;
+    height: 70%;
+    object-fit: contain;
     transition: 0.5s;
   }
 
   img:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 `;
 
