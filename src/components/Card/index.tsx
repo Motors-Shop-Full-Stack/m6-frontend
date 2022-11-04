@@ -2,21 +2,25 @@ import React from "react";
 import Button from "../Button";
 import { Container, ImageBox, TextBox, ProfileBox, InfoBox, InfoDetail, AdminBox } from "./styles";
 import Test from "./test.png"
+import { ICardProps } from "../../pages/Home/interfaces";
 
-const Card = () => {
+const Card = ({ data }: ICardProps) => {
     ///Autentication States Simulation
     const [isAdmin] = React.useState<boolean>(true);
 
     return (
         <Container>
-            <ImageBox>
-                <div className="tag">Ativo</div>
-                <img src={Test}></img>
+            <ImageBox url={data.announcement_cover}>
+                {data.is_active ? (
+                    <div className="tag">Ativo</div>
+                ) : (
+                    <div className="tag">Inativo</div>
+                )}
+                <img src={data.announcement_cover}></img>
             </ImageBox>
             <TextBox>
-                <h5>Product title stays here - max 1 line</h5>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...
-                </p>
+                <h5>{data.title}</h5>
+                <p>{data.description}</p>
             </TextBox>
             {isAdmin ? (
                 <ProfileBox>
@@ -27,11 +31,11 @@ const Card = () => {
 
             <InfoBox>
                 <div className="info-1">
-                    <InfoDetail>0KM</InfoDetail>
-                    <InfoDetail>2019</InfoDetail>
+                    <InfoDetail>{data.km} KM</InfoDetail>
+                    <InfoDetail>{data.fabrication_year.toString()}</InfoDetail>
                 </div>
                 <div>
-                    <h5>R$ 00.000,00</h5>
+                    <h5>R$ {data.price}</h5>
                 </div>
             </InfoBox>
             <AdminBox>

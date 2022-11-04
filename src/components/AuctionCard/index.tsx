@@ -3,14 +3,15 @@ import { HiArrowRight } from "react-icons/hi";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import React from "react";
 import Button from "../Button";
+import { ICardProps } from "../../pages/Home/interfaces";
 
-const AuctionCard = () => {
+const AuctionCard = ({data}: ICardProps) => {
   ///Autentication States Simulation
   const [isAdmin] = React.useState<boolean>(false);
 
   return (
     <Container>
-      <ContentBox>
+      <ContentBox url={data.announcement_cover}>
         <div className="content-timer">
           <div>
             <AiOutlineClockCircle className="clock-icon" />
@@ -18,10 +19,9 @@ const AuctionCard = () => {
           </div>
         </div>
         <div className="content-text">
-          <h1>Mercedes</h1>
+          <h1>{data.title}</h1>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
+            {data.description}
           </p>
           {isAdmin ? null : (
             <div className="content_profile-box">
@@ -32,11 +32,11 @@ const AuctionCard = () => {
 
           <div className="content_infos-box">
             <div className="info-detail">
-              <DetailBox>2013</DetailBox>
-              <DetailBox>0 km</DetailBox>
+              <DetailBox>{data.fabrication_year.toString()}</DetailBox>
+              <DetailBox>{data.km}KM</DetailBox>
             </div>
             <div className="info-price">
-              <h5>R$ 00.000,00</h5>
+              <h5>R$ {data.price}</h5>
             </div>
           </div>
         </div>

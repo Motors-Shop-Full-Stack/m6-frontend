@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import AuctionCard from "../../components/AuctionCard";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
@@ -5,8 +6,17 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ProductList from "../../components/ProductList";
 import { BannerWrapper, ListsWrapper } from "./styles";
+import axios from "axios"
+import { IAnnouncement } from "./interfaces";
 
 const Home = () => {
+    const [announcements, setAnnouncements] = useState<IAnnouncement[]>([])
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/announcements/').
+            then((response) => setAnnouncements(response.data))
+    }, []);
+
     return (
         <>
             <Header />
@@ -52,22 +62,25 @@ const Home = () => {
             </BannerWrapper>
             <ListsWrapper>
                 <ProductList gap="10px" title='Leilão' id="auction">
-                    <AuctionCard />
-                    <AuctionCard />
-                    <AuctionCard />
+                    {!!announcements && announcements.map(item => {
+                        if (item.announcement_type === "auction") {
+                            return <AuctionCard key={item.id} data={item}></AuctionCard>
+                        }
+                    })}
                 </ProductList>
                 <ProductList gap="20px" title='Carros' id="cars">
-                    <Card />
-                    <Card />
-                    <Card />
+                    {!!announcements && announcements.map(item => {
+                        if (item.announcement_type === "sell" && item.category === "car") {
+                            return <Card key={item.id} data={item}></Card>
+                        }
+                    })}
                 </ProductList>
                 <ProductList gap="20px" title='Motos' id="bikes">
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
+                    {!!announcements && announcements.map(item => {
+                        if (item.announcement_type === "sell" && item.category === "bike") {
+                            return <Card key={item.id} data={item}></Card>
+                        }
+                    })}
                 </ProductList>
             </ListsWrapper>
             <Footer />
