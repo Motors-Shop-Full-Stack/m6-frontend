@@ -16,7 +16,6 @@ const Card = ({ data }: ICardProps) => {
   ///Autentication States Simulation
   const [isAdmin] = React.useState<boolean>(true);
 
-<<<<<<< HEAD
   return (
     <Container>
       <ImageBox url={data.announceCover}>
@@ -70,44 +69,5 @@ const Card = ({ data }: ICardProps) => {
     </Container>
   );
 };
-=======
-    return (
-        <Container>
-            <ImageBox url={data.announceCover}>
-                {data.is_active ? (
-                    <div className="tag">Ativo</div>
-                ) : (
-                    <div className="tag">Inativo</div>
-                )}
-                <img src={data.announceCover}></img>
-            </ImageBox>
-            <TextBox>
-                <h5>{data.title}</h5>
-                <p>{data.description}</p>
-            </TextBox>
-            {isAdmin ? (
-                <ProfileBox>
-                    <div>R</div>
-                    <h5>Regina</h5>
-                </ProfileBox>
-            ) : (null)}
-
-            <InfoBox>
-                <div className="info-1">
-                    <InfoDetail>{data.km} KM</InfoDetail>
-                    <InfoDetail>{data.fabricationYear.toString()}</InfoDetail>
-                </div>
-                <div>
-                    <h5>R$ {data.price}</h5>
-                </div>
-            </InfoBox>
-            <AdminBox>
-                <Button borderC="--grey1" backgroundC="--whiteFixed" fontC="--grey1" width="100px" height="40px">Ver como</Button>
-                <Button borderC="--grey1" backgroundC="--whiteFixed" fontC="--grey1" width="100px" height="40px">Ver como</Button>
-            </AdminBox>
-        </Container>
-    );
-}
->>>>>>> d0cc9eed374828e90816372b929106a7d812a017
 
 export default Card;

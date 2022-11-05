@@ -14,7 +14,7 @@ const ProfileView = () => {
 
   return (
     <>
-      <Modal name="first" pTop="6%" pLeft="35%">
+      <Modal name="first" pTop="4%" pLeft="0%">
         <Form name="createad" />
       </Modal>
       <Header></Header>

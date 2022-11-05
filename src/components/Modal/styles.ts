@@ -19,9 +19,11 @@ const handlePositionRight = (props: Props) => {
 };
 
 export const ModalSection = styled.section`
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.4);
 `;
@@ -35,10 +37,10 @@ export const ModalContainerOne = styled.div<Props>`
   top: ${(props) => handlePositionTop(props)};
   left: ${(props) => handlePositionLeft(props)};
   right: ${(props) => handlePositionRight(props)};
+  margin: 0 auto;
   width: max-content;
   height: max-content;
   border-radius: 4px;
-  /* border: 1px solid #000; */
   background-color: var(--grey10);
 `;
 

@@ -6,7 +6,6 @@ export const StyledForm = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid #000;
   background-color: var(--grey10);
   border-radius: 4px;
   width: 200px;
@@ -64,15 +63,13 @@ export const FormAd = styled.form`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid #000;
   background-color: var(--grey10);
   border-radius: 4px;
-  max-width: 350px;
-  width: 75%;
+  width: 295px;
   height: 620px;
   @media (min-width: 425px) {
     height: 560px;
-    width: 100%;
+    width: 370px;
   }
 `;
 
