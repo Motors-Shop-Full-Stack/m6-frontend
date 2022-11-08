@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { motorsShopAPI } from "../../services/api";
 import { createContext, useContext, useState } from "react";
-import { AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 export interface IApiProvider {
   children: ReactNode;
@@ -18,10 +18,16 @@ export interface IAnnouncementData {
   announceCover: string;
 }
 
+interface ILoginData {
+  email: string
+  password: string
+}
+
 export interface IApi {
   setHomeData: React.Dispatch<React.SetStateAction<IAnnouncementData[]>>;
-  handleHomeData: (data: IAnnouncementData) => void;
+  handleAnnouncementPostRequest: (data: IAnnouncementData) => void;
   homeData: IAnnouncementData[];
+  handleLoginRequest: (data: ILoginData) => void
 }
 
 const ApiContext = createContext<IApi>({} as IApi);
@@ -31,11 +37,27 @@ export const ApiProvider = ({ children }: IApiProvider) => {
     [] as IAnnouncementData[]
   );
 
-  const handleHomeData = (data: IAnnouncementData) => {
-    motorsShopAPI
-      .get("announcements", { data })
+  const handleAnnouncementPostRequest = async (data: IAnnouncementData) => {
+    const token = localStorage.getItem("token")
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+    
+    await axios
+      .post("http://localhost:3000/announcements/", data, config)
       .then((resp) => {
-        setHomeData(resp.data);
+        console.log(resp)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleLoginRequest = async (data: ILoginData) => {
+    await axios
+      .post("http://localhost:3000/users/login/", data)
+      .then((res) => {
+        localStorage.setItem("token", res.data.token)
       })
       .catch((error) => {
         console.log(error);
@@ -43,7 +65,7 @@ export const ApiProvider = ({ children }: IApiProvider) => {
   };
 
   return (
-    <ApiContext.Provider value={{ homeData, handleHomeData, setHomeData }}>
+    <ApiContext.Provider value={{ homeData, handleAnnouncementPostRequest, setHomeData, handleLoginRequest}}>
       {children}
     </ApiContext.Provider>
   );
