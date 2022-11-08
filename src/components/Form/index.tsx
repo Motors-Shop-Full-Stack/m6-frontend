@@ -26,20 +26,21 @@ interface IFormProps {
 }
 
 export interface IUseFormProps {
-  name: string;
-  password: string;
-  title: string;
-  km: number;
-  year: number;
-  price: number;
-  description: string;
-  announceCover: string;
-  url: string;
+  name?: string;
+  email?: string;
+  password?: string;
+  title?: string;
+  km?: number;
+  year?: number;
+  price?: number;
+  description?: string;
+  announceCover?: string;
+  url?: string;
 }
 
 const Form = ({ name }: IFormProps) => {
   const { handleSecondModal, handleFirstModal } = useModal();
-  const { homeData, handleHomeData } = useApi();
+  const { homeData, handleAnnouncementPostRequest, handleLoginRequest } = useApi();
 
   const [announceType, setAnnounceType] = useState<string>("sale");
   const handleAnnounceType = (e: any) => {
@@ -54,18 +55,17 @@ const Form = ({ name }: IFormProps) => {
   };
 
   const loginSchema = yup.object().shape({
-    name: yup
+    email: yup
       .string()
-      .required("Campo obrigatório")
-      .min(4, "Mínimo 4 caracteres")
-      .max(20, "Máximo 20 caracteres"),
+      .email()
+      .required("Campo obrigatório"),
     password: yup
       .string()
       .required("Campo obrigatório")
-      .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-        "Mínimo 8 caracteres, um maiúsculo, um número e um caracter especial"
-      ),
+      // .matches(
+      //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+      //   "Mínimo 8 caracteres, um maiúsculo, um número e um caracter especial"
+      // ),
   });
 
   const createdAdSchema = yup.object().shape({
@@ -104,7 +104,11 @@ const Form = ({ name }: IFormProps) => {
   });
 
   const handleLogin = (data: any) => {
-    console.log(data);
+    const requestObj = {
+      email: data.email,
+      password: data.password
+    }
+    handleLoginRequest(requestObj)
   };
 
   const handleCreateAd = (data: any) => {
@@ -118,7 +122,7 @@ const Form = ({ name }: IFormProps) => {
       category: announceCategory,
       announceCover: data.announceCover,
     };
-    handleHomeData(requestObj);
+    handleAnnouncementPostRequest(requestObj);
   };
 
   switch (name.toLowerCase()) {
@@ -130,9 +134,9 @@ const Form = ({ name }: IFormProps) => {
           </TitleForm>
           <Input
             type={"text"}
-            description={"Usuário"}
-            placeholder={"Digitar usuário"}
-            name={"name"}
+            description={"Email"}
+            placeholder={"Digitar email"}
+            name={"email"}
             register={register}
             errors={errors.name}
             width={"152px"}
@@ -174,6 +178,7 @@ const Form = ({ name }: IFormProps) => {
             fontC={"--grey0"}
             width={"152px"}
             height={"35px"}
+            type={"submit"}
           >
             Cadastrar
           </Button>

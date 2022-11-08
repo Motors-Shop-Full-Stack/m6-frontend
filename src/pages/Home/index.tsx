@@ -9,16 +9,18 @@ import { BannerWrapper, ListsWrapper } from "./styles";
 import axios from "axios";
 import { IAnnouncement } from "./interfaces";
 import { useApi } from "../../providers/api";
+import Form from "../../components/Form";
 
 const Home = () => {
   const [announcements, setAnnouncements] = useState<IAnnouncement[]>([]);
-  const { homeData } = useApi();
+  const { homeData, setHomeData } = useApi();
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/announcements/")
-      .then((response) => setAnnouncements(response.data));
-  }, []);
+      .then((response) => setHomeData(response.data))
+      .catch((error) => console.log(error));
+  }, [homeData]);
 
   return (
     <>

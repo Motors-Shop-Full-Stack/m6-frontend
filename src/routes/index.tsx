@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import Home from "../pages/Home";
+import Login from "../pages/Login";
 import ProfileView from "../pages/ProfileView";
 
 export default function Routes() {
@@ -18,7 +19,9 @@ export default function Routes() {
             <Route path="/profile">
               <ProfileView />
             </Route>
-
+            <Route path="/login">
+              <Login />
+            </Route>
           </Switch>
       </Router>
     );
