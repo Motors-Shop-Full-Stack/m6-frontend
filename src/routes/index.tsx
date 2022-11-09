@@ -1,25 +1,17 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "../pages/Home";
 import ProfileView from "../pages/ProfileView";
+import Register from "../pages/Register";
 
-export default function Routes() {
-    return (
-      <Router>
-          <Switch>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route path="/profile">
-              <ProfileView />
-            </Route>
-
-          </Switch>
-      </Router>
-    );
-  }
+const Routes = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/profile" component={ProfileView} />
+        <Route path="/register" component={Register} />
+      </Switch>
+    </Router>
+  );
+};
+export default Routes;

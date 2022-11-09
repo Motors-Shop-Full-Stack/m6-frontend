@@ -56,6 +56,13 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background: var(--whiteFixed);
+        &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--grey3);
+      border-radius: 3px;
+    }
     }
 
     button {
