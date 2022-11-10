@@ -1,6 +1,6 @@
 import { UseFormRegister, FieldError } from "react-hook-form";
+import { IUseFormProps } from "../Form/interfaces";
 import { InputContainer, StyledInput, StyledLabel, StyledSpan } from "./styles";
-import { IUseFormProps } from "../Form";
 
 export interface IInputProps {
   type: string;

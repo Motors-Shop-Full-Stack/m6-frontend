@@ -1,7 +1,10 @@
 import React, { ReactNode } from "react";
-import { motorsShopAPI } from "../../services/api";
 import { createContext, useContext, useState } from "react";
-import { AxiosRequestConfig } from "axios";
+import axios from "axios";
+import { IDecodedData, IUserData } from "./interfaces";
+import { IUser } from "../../components/Form/interfaces";
+import toast from 'react-hot-toast';
+import jwt_decode from "jwt-decode";
 
 export interface IApiProvider {
   children: ReactNode;
@@ -18,10 +21,17 @@ export interface IAnnouncementData {
   announceCover: string;
 }
 
+interface ILoginData {
+  email: string
+  password: string
+}
+
 export interface IApi {
-  setHomeData: React.Dispatch<React.SetStateAction<IAnnouncementData[]>>;
-  handleHomeData: (data: IAnnouncementData) => void;
   homeData: IAnnouncementData[];
+  setHomeData: React.Dispatch<React.SetStateAction<IAnnouncementData[]>>;
+  handleAnnouncementPostRequest: (data: IAnnouncementData) => void;
+  handleLoginRequest: (data: ILoginData) => void
+  handleRegisterRequest: (data: IUser) => void
 }
 
 const ApiContext = createContext<IApi>({} as IApi);
@@ -31,19 +41,52 @@ export const ApiProvider = ({ children }: IApiProvider) => {
     [] as IAnnouncementData[]
   );
 
-  const handleHomeData = (data: IAnnouncementData) => {
-    motorsShopAPI
-      .get("announcements", { data })
-      .then((resp) => {
-        setHomeData(resp.data);
+  const handleAnnouncementPostRequest = async (data: IAnnouncementData) => {
+    const token = localStorage.getItem("token")
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+    
+    await axios
+      .post("http://localhost:3000/announcements/", data, config)
+      .then((res) => {
+        toast.success("OK")
+      })
+      .catch((error) => {
+        toast.error("ERROR")
+      });
+  };
+
+  const handleLoginRequest = async (data: ILoginData) => {
+  
+  
+    await axios
+      .post("http://localhost:3000/users/login/", data)
+      .then((res) => {
+        localStorage.setItem("token", res.data.token)
+        let decoded: IDecodedData = jwt_decode(res.data.token)
+        localStorage.setItem("id", decoded.id)
+        toast.success("OK")
       })
       .catch((error) => {
         console.log(error);
+        toast.error("ERROR")
+      });
+  };
+
+  const handleRegisterRequest = async (data: IUserData) => {
+    await axios
+      .post("http://localhost:3000/users/", data)
+      .then((res) => {
+        toast.success("OK")
+      })
+      .catch((error) => {
+        toast.error("ERROR")
       });
   };
 
   return (
-    <ApiContext.Provider value={{ homeData, handleHomeData, setHomeData }}>
+    <ApiContext.Provider value={{ homeData, handleAnnouncementPostRequest, setHomeData, handleLoginRequest, handleRegisterRequest}}>
       {children}
     </ApiContext.Provider>
   );
