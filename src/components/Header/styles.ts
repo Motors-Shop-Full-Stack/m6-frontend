@@ -4,7 +4,7 @@ interface Props {
   isOpen: boolean;
 }
 
-export const Container = styled.div<Props>`
+export const Container = styled.header<Props>`
   display: flex;
   flex-direction: ${(props) => (props.isOpen ? "column" : "row")};
   align-items: center;

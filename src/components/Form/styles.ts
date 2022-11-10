@@ -249,6 +249,7 @@ export const FormRegisterPersonalInfo = styled.section`
   width: 94%;
   height: 460px;
   margin: 15px 0px 0px 0px;
+  font-family: "Inter";
   label {
     font-size: 12px;
   }

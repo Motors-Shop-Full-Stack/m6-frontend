@@ -29,37 +29,11 @@ import {
 import { useModal } from "../../providers/modal";
 import { useApi } from "../../providers/api";
 import { useState } from "react";
-
-interface IFormProps {
-  name: string;
-}
-
-export interface IUseFormProps {
-  name?: string;
-  email?: string;
-  cpf?: string;
-  cell?: string;
-  birthdate?: string;
-  password?: string;
-  confirmpassword?: string;
-  title?: string;
-  km?: number;
-  year?: number;
-  price?: number;
-  description?: string;
-  announceCover?: string;
-  url?: string;
-  cep?: string;
-  state?: string;
-  city?: string;
-  street?: string;
-  number?: string;
-  complement?: string;
-}
+import { IFormProps, IUseFormProps} from "./interfaces";
 
 const Form = ({ name }: IFormProps) => {
   const { handleSecondModal, handleFirstModal } = useModal();
-  const { homeData, handleAnnouncementPostRequest, handleLoginRequest } =
+  const { homeData, handleAnnouncementPostRequest, handleLoginRequest, handleRegisterRequest } =
     useApi();
 
   const [announceType, setAnnounceType] = useState<string>("sale");
@@ -78,7 +52,6 @@ const Form = ({ name }: IFormProps) => {
   const handleAccountType = (e: any) => {
     setAccountType(e.target.value);
   };
-  console.log(accountType);
 
   const loginSchema = yup.object().shape({
     email: yup.string().email().required("Campo obrigatório"),
@@ -97,11 +70,11 @@ const Form = ({ name }: IFormProps) => {
     email: yup.string().email().required("Campo obrigatório"),
     password: yup
       .string()
-      .required("Campo obrigatório")
-      .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-        "Mínimo 8 caracteres, um maiúsculo, um número e um caracter especial"
-      ),
+      .required("Campo obrigatório"),
+      // .matches(
+      //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+      //   "Mínimo 8 caracteres, um maiúsculo, um número e um caracter especial"
+      // ),
     confirmpassword: yup
       .string()
       .required("Required field!")
@@ -111,12 +84,12 @@ const Form = ({ name }: IFormProps) => {
       .required("Campo obrigatório")
       .max(11, "Máximo 11 caracteres")
       .matches(/^[0-9]*$/, "Apenas números"),
-    cell: yup
+    cel: yup
       .string()
       .required("Campo obrigatório")
       .max(11, "Máximo 11 caracteres")
       .matches(/^[0-9]*$/, "Apenas números"),
-    birthdate: yup.date().required("Campo obrigatório"),
+    birthdate: yup.string().required("Campo obrigatório"),
     description: yup.string().required("Campo obrigatório"),
     cep: yup
       .string()
@@ -189,7 +162,6 @@ const Form = ({ name }: IFormProps) => {
   };
 
   const handleCreateAd = (data: any) => {
-    console.log(data);
     const requestObj = {
       announceType: announceType,
       title: data.title,
@@ -204,7 +176,25 @@ const Form = ({ name }: IFormProps) => {
   };
 
   const handleRegister = (data: any) => {
-    console.log(data);
+
+    const requestObj = {
+      name: data.name,
+      email: data.email,
+      cpf: data.cpf,
+      cel: data.cel,
+      birthdate: data.birthdate,
+      description: data.description,
+      cep: data.cep,
+      state: data.state,
+      city: data.city,
+      street: data.street,
+      number: data.number,
+      complement: data.complement,
+      accountType: data.accountType,
+      password: data.password,
+    };
+
+    handleRegisterRequest(requestObj)
   };
 
   switch (name.toLowerCase()) {
@@ -520,14 +510,14 @@ const Form = ({ name }: IFormProps) => {
               type={"text"}
               description={"Celular"}
               placeholder={"(DDD)90000-0000"}
-              name={"cell"}
+              name={"cel"}
               register={register}
-              errors={errors?.cell}
+              errors={errors?.cel}
               width={"100%"}
               height={"60px"}
             />
             <Input
-              type={"date"}
+              type={"text"}
               description={"Data de nascimento"}
               placeholder={"00/00/00"}
               name={"birthdate"}

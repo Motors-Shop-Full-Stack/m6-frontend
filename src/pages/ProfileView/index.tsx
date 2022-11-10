@@ -4,6 +4,7 @@ import Modal from "../../components/Modal";
 import { GradientContainer, UserBox, UserType } from "./styles";
 import { useModal } from "../../providers/modal";
 import Form from "../../components/Form";
+import {Toaster} from "react-hot-toast"
 
 const ProfileView = () => {
   const { handleFirstModal } = useModal();
@@ -46,6 +47,7 @@ const ProfileView = () => {
           </div>
         </UserBox>
       </GradientContainer>
+      <Toaster />
     </>
   );
 };

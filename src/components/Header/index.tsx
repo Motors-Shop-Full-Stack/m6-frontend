@@ -79,12 +79,7 @@ const Header = () => {
               </Menu>
             </>
           )}
-
-
-
-
         </UserBox>
-
       </div>
     </Container>
   );
