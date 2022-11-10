@@ -1,7 +1,9 @@
 import React, { ReactNode } from "react";
-import { motorsShopAPI } from "../../services/api";
 import { createContext, useContext, useState } from "react";
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
+import { IUserData } from "./interfaces";
+import { IUser } from "../../components/Form/interfaces";
+import toast from 'react-hot-toast';
 
 export interface IApiProvider {
   children: ReactNode;
@@ -24,10 +26,11 @@ interface ILoginData {
 }
 
 export interface IApi {
+  homeData: IAnnouncementData[];
   setHomeData: React.Dispatch<React.SetStateAction<IAnnouncementData[]>>;
   handleAnnouncementPostRequest: (data: IAnnouncementData) => void;
-  homeData: IAnnouncementData[];
   handleLoginRequest: (data: ILoginData) => void
+  handleRegisterRequest: (data: IUser) => void
 }
 
 const ApiContext = createContext<IApi>({} as IApi);
@@ -45,11 +48,11 @@ export const ApiProvider = ({ children }: IApiProvider) => {
     
     await axios
       .post("http://localhost:3000/announcements/", data, config)
-      .then((resp) => {
-        console.log(resp)
+      .then((res) => {
+        toast.success("OK")
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("ERROR")
       });
   };
 
@@ -58,14 +61,27 @@ export const ApiProvider = ({ children }: IApiProvider) => {
       .post("http://localhost:3000/users/login/", data)
       .then((res) => {
         localStorage.setItem("token", res.data.token)
+        toast.success("OK")
       })
       .catch((error) => {
         console.log(error);
+        toast.error("ERROR")
+      });
+  };
+
+  const handleRegisterRequest = async (data: IUserData) => {
+    await axios
+      .post("http://localhost:3000/users/", data)
+      .then((res) => {
+        toast.success("OK")
+      })
+      .catch((error) => {
+        toast.error("ERROR")
       });
   };
 
   return (
-    <ApiContext.Provider value={{ homeData, handleAnnouncementPostRequest, setHomeData, handleLoginRequest}}>
+    <ApiContext.Provider value={{ homeData, handleAnnouncementPostRequest, setHomeData, handleLoginRequest, handleRegisterRequest}}>
       {children}
     </ApiContext.Provider>
   );
