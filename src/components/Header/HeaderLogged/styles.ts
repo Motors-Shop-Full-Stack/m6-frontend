@@ -32,6 +32,10 @@ export const Container = styled.header<Props>`
     border-bottom: -2px solid #dee2e6;
     padding: 1rem 1rem;
     
+    img{
+      cursor: pointer;
+    }
+    
     .icon {
       width: 35px;
       height: 40px;

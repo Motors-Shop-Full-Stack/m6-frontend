@@ -3,13 +3,15 @@ import { Container, Item, UserBox } from "./styles";
 import { BiMenu, BiX } from "react-icons/bi";
 import Button from "../../Button";
 import { useHeader } from "../../../providers/HeaderProvider";
+import { useHistory } from "react-router-dom";
 
 const HeaderDefault = () => {
   const { isOpen, setIsOpen } = useHeader();
+  const history = useHistory()
     return ( 
     <Container isOpen={isOpen}>
         <div className="container-img">
-          <img src={Logo} alt="logo" />
+          <img src={Logo} alt="logo" onClick={()=> history.push("/")} />
           {!isOpen ? (
             <BiMenu className="icon" onClick={() => setIsOpen(true)} />
           ) : (

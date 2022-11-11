@@ -4,13 +4,16 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { BiMenu, BiX } from "react-icons/bi";
 import { useHeader } from "../../../providers/HeaderProvider";
+import { getInitials, formatName } from "../../../utils/stringFormaters";
+import { useHistory } from "react-router-dom";
 
 const HeaderLogged = ({data}: any) => {
-  const { isOpen, setIsOpen, open, getInitials, formatName, handleClick, handleClose, anchorEl } = useHeader();
+  const { isOpen, setIsOpen, open, handleClick, handleClose, anchorEl } = useHeader();
+  const history = useHistory()
     return ( 
         <Container isOpen={isOpen}>
             <div className="container-img">
-              <img src={Logo} alt="logo" />
+              <img src={Logo} alt="logo" onClick={()=> history.push("/")} />
               {!isOpen ? (
                 <BiMenu className="icon" onClick={() => setIsOpen(true)} />
               ) : (
