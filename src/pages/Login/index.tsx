@@ -7,7 +7,6 @@ import {Toaster} from "react-hot-toast"
 const Login = () => {
   return (
     <>
-      <Header />
       <Container>
         <Form name="login"></Form>
       </Container>
