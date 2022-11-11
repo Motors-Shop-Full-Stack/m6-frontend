@@ -49,3 +49,11 @@ export interface IDecodedData {
   isActive: string;
 
 }
+
+export interface IApi {
+  homeData: IAnnouncement[];
+  setHomeData: React.Dispatch<React.SetStateAction<IAnnouncement[]>>;
+  handleAnnouncementPostRequest: (data: IAnnouncementRequest) => void;
+  handleLoginRequest: (data: ILoginData) => void
+  handleRegisterRequest: (data: IUserData) => void
+}
