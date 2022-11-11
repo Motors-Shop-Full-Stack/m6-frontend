@@ -33,6 +33,7 @@ export const DivRights = styled.div`
 
 export const DivUp = styled.div`
   display: flex;
+  cursor: pointer;
   img {
     height: 35px;
   }
