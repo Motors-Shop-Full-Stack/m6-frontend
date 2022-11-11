@@ -1,28 +1,22 @@
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import Modal from "../../components/Modal";
-import { GradientContainer, UserBox, UserType } from "./styles";
+import { GradientContainer, ListsWrapper, UserBox, UserType } from "./styles";
 import { useModal } from "../../providers/modal";
 import Form from "../../components/Form";
 import { Toaster } from "react-hot-toast";
 import useFetch from "../../hooks/useFetch";
+import {getInitials} from "../../utils/stringFormaters"
+import { useParams } from "react-router-dom"
+import ProductList from "../../components/ProductList";
+import { IAnnouncement } from "../Home/interfaces";
+import  Card  from "../../components/Card";
 
 const ProfileView = () => {
   const { handleFirstModal } = useModal();
+  const params: {id: string} = useParams()
 
-  const token = localStorage.getItem("token");
-  const userId = localStorage.getItem("id");
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
-
-  const { data } = useFetch(`http://localhost:3000/users/${userId}`, config);
-
-  const getInitials = (name: string) => {
-    return (
-      name.split(" ")[0][0] + name.split(" ")[name.split(" ").length - 1][0]
-    );
-  };
+  const { data } = useFetch(`http://localhost:3000/users/${params.id}`);
 
   return (
     <>
@@ -58,6 +52,24 @@ const ProfileView = () => {
           </div>
         </UserBox>
       </GradientContainer>
+      <ListsWrapper>
+      <ProductList gap="20px" title="Carros" id="cars">
+        {!!data &&
+            data.announcements.map((item: IAnnouncement) => {
+                if (item.announceType === "sale" && item.category === "car") {
+                  return <Card key={item.id} data={item}></Card>;
+                }
+            })}
+        </ProductList>
+        <ProductList gap="20px" title="Motos" id="bikes">
+        {!!data &&
+            data.announcements.map((item: IAnnouncement) => {
+                if (item.announceType === "sale" && item.category === "motorcycle") {
+                  return <Card key={item.id} data={item}></Card>;
+                }
+            })}
+        </ProductList>
+      </ListsWrapper>
       <Toaster />
     </>
   );

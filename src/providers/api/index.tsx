@@ -1,24 +1,15 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
-
-import { IAnnouncement, IAnnouncementRequest, IApiProvider, ILoginData, IUserData, IDecodedData } from "./interfaces";
+import { IAnnouncement, IAnnouncementRequest, IApiProvider, ILoginData, IUserData, IDecodedData, IApi } from "./interfaces";
 import { IUser } from "../../components/Form/interfaces";
 import toast from 'react-hot-toast';
 import jwt_decode from "jwt-decode";
 
-
-export interface IApi {
-  homeData: IAnnouncement[];
-  setHomeData: React.Dispatch<React.SetStateAction<IAnnouncement[]>>;
-  handleAnnouncementPostRequest: (data: IAnnouncementRequest) => void;
-  handleLoginRequest: (data: ILoginData) => void
-  handleRegisterRequest: (data: IUser) => void
-}
-
 const ApiContext = createContext<IApi>({} as IApi);
 
 export const ApiProvider = ({ children }: IApiProvider) => {
+
   const [homeData, setHomeData] = useState<IAnnouncement[]>(
     [] as IAnnouncement[]
   );

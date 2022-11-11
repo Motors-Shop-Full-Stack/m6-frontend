@@ -15,6 +15,7 @@ export const ImageBox = styled.div<Props>`
   background: #e9ecef;
   border: 2px solid transparent;
   height: 200px;
+  cursor: pointer;
   /* Grey Scale/grey-7 */
 
   .tag {

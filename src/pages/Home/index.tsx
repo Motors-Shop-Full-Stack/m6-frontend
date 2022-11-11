@@ -9,6 +9,7 @@ import { BannerWrapper, ListsWrapper } from "./styles";
 import axios from "axios";
 import {useApi } from "../../providers/api";
 import { IAnnouncement } from "./interfaces";
+import { Toaster } from "react-hot-toast";
 
 const Home = () => {
   const { homeData, setHomeData } = useApi();
@@ -92,6 +93,7 @@ const Home = () => {
         </ProductList>
       </ListsWrapper>
       <Footer />
+      <Toaster />
     </>
   );
 };

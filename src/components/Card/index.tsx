@@ -11,20 +11,23 @@ import {
 } from "./styles";
 import Test from "./test.png";
 import { ICardProps } from "../../pages/Home/interfaces";
+import { useHistory } from "react-router-dom";
 
 const Card = ({ data }: ICardProps) => {
+
+  const history = useHistory()
   ///Autentication States Simulation
-  const [isAdmin] = React.useState<boolean>(true);
+  const [isAdmin] = React.useState<boolean>(false);
 
   return (
     <Container>
-      <ImageBox url={data.announceCover}>
+      <ImageBox url={data.announceCover} onClick={() => history.push(`/product/${data.id}`)}>
         {data.is_active ? (
           <div className="tag">Ativo</div>
         ) : (
           <div className="tag">Inativo</div>
         )}
-        <img src={data.announceCover}></img>
+        <img alt="product" src={data.announceCover}></img>
       </ImageBox>
       <TextBox>
         <h5>{data.title}</h5>
@@ -46,26 +49,28 @@ const Card = ({ data }: ICardProps) => {
           <h5>R$ {data.price}</h5>
         </div>
       </InfoBox>
-      <AdminBox>
-        <Button
-          borderC="--grey1"
-          backgroundC="--whiteFixed"
-          fontC="--grey1"
-          width="100px"
-          height="40px"
-        >
-          Ver como
-        </Button>
-        <Button
-          borderC="--grey1"
-          backgroundC="--whiteFixed"
-          fontC="--grey1"
-          width="100px"
-          height="40px"
-        >
-          Ver como
-        </Button>
-      </AdminBox>
+      {isAdmin ? (
+        <AdminBox>
+          <Button
+            borderC="--grey1"
+            backgroundC="--whiteFixed"
+            fontC="--grey1"
+            width="100px"
+            height="40px"
+          >
+            Editar
+          </Button>
+          <Button
+            borderC="--grey1"
+            backgroundC="--whiteFixed"
+            fontC="--grey1"
+            width="100px"
+            height="40px"
+          >
+            Ver como
+          </Button>
+        </AdminBox>
+      ) : null}
     </Container>
   );
 };

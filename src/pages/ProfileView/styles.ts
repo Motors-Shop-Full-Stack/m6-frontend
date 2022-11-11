@@ -92,3 +92,14 @@ export const UserType = styled.div`
   line-height: 24px;
   color: #4529e6;
 `;
+
+export const ListsWrapper = styled.div`
+display: flex;
+flex-direction: column;
+gap: 60px;
+padding: 30px 0px;
+@media (min-width: 768px){
+  gap: 120px;
+padding: 75px 0px;
+}
+`

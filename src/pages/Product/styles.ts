@@ -5,12 +5,16 @@ export const MainContainer = styled.div`
   width: 100%;
   background: linear-gradient(to bottom, var(--brand1) 60%, var(--grey6) 0%);
   justify-content: center;
-  padding: 32px;
+  padding: 132px 32px 32px 32px;
 
   > div {
     display: flex;
+    flex-direction: column;
     gap: 40px;
     max-width: 1200px;
+    @media (min-width: 900px){
+      flex-direction: row;
+    }
   }
 `;
 
@@ -18,6 +22,9 @@ export const LeftColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  @media (min-width: 900px){
+      min-width: 55%;
+    }
 `;
 
 export const PhotoContainer = styled.div`
@@ -27,6 +34,11 @@ export const PhotoContainer = styled.div`
   align-items: center;
   border-radius: 4px;
   padding: 45px 0;
+  img{
+    width: 100%;
+    max-width: 400px;
+    object-fit: cover;
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -99,8 +111,10 @@ export const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-width: 420px;
   width: 100%;
+  @media (min-width: 900px) {
+    min-width: 360px;
+  }
 `;
 
 export const GalleryContainer = styled.div`
@@ -108,8 +122,13 @@ export const GalleryContainer = styled.div`
   flex-direction: column;
   background-color: var(--whiteFixed);
   border-radius: 4px;
-  padding: 36px 44px;
+  padding: 26px 24px;
   gap: 32px;
+  width: 100%;
+
+  @media (min-width: 500px){
+    padding: 36px 44px;
+    }
 
   h2 {
     font-family: var(--lexend);
@@ -125,7 +144,7 @@ export const GalleryContainer = styled.div`
   div > img {
     width: 100px;
     background-color: var(--grey7);
-    padding: 28px 6px;
+    padding: 18px 3px;
   }
 `;
 
@@ -151,6 +170,7 @@ export const AdvertiserContainer = styled.div`
   border-radius: 4px;
   padding: 36px 44px;
   gap: 32px;
+  width: 100%;
 
   h3 {
     font-family: var(--lexend);
