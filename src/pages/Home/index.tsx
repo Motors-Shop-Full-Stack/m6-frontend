@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import AuctionCard from "../../components/AuctionCard";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
@@ -7,12 +7,10 @@ import Header from "../../components/Header";
 import ProductList from "../../components/ProductList";
 import { BannerWrapper, ListsWrapper } from "./styles";
 import axios from "axios";
+import {useApi } from "../../providers/api";
 import { IAnnouncement } from "./interfaces";
-import { useApi } from "../../providers/api";
-import Form from "../../components/Form";
 
 const Home = () => {
-  const [announcements, setAnnouncements] = useState<IAnnouncement[]>([]);
   const { homeData, setHomeData } = useApi();
 
   useEffect(() => {
@@ -67,7 +65,7 @@ const Home = () => {
       <ListsWrapper>
         <ProductList gap="10px" title="Leilão" id="auction">
           {!!homeData &&
-            homeData.map((item: any) => {
+            homeData.map((item: IAnnouncement) => {
               if (item.announceType === "auction") {
                 return <AuctionCard key={item.id} data={item}></AuctionCard>;
               }
@@ -75,7 +73,7 @@ const Home = () => {
         </ProductList>
         <ProductList gap="20px" title="Carros" id="cars">
           {!!homeData &&
-            homeData.map((item: any) => {
+            homeData.map((item: IAnnouncement) => {
               if (item.announceType === "sale" && item.category === "car") {
                 return <Card key={item.id} data={item}></Card>;
               }
@@ -83,7 +81,7 @@ const Home = () => {
         </ProductList>
         <ProductList gap="20px" title="Motos" id="bikes">
           {!!homeData &&
-            homeData.map((item: any) => {
+            homeData.map((item: IAnnouncement) => {
               if (
                 item.announceType === "sale" &&
                 item.category === "motorcycle"
