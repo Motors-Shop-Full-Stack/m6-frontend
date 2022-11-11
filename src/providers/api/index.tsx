@@ -1,34 +1,15 @@
 import React, { ReactNode } from "react";
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
-import { IUserData } from "./interfaces";
+import { IAnnouncement, IAnnouncementRequest, IApiProvider, ILoginData, IUserData } from "./interfaces";
 import { IUser } from "../../components/Form/interfaces";
 import toast from 'react-hot-toast';
-
-export interface IApiProvider {
-  children: ReactNode;
-}
-
-export interface IAnnouncementData {
-  announceType: string;
-  title: string;
-  fabricationYear: number;
-  km: number;
-  price: string;
-  description: string;
-  category: string | undefined;
-  announceCover: string;
-}
-
-interface ILoginData {
-  email: string
-  password: string
-}
+import jwt_decode from "jwt-decode";
 
 export interface IApi {
-  homeData: IAnnouncementData[];
-  setHomeData: React.Dispatch<React.SetStateAction<IAnnouncementData[]>>;
-  handleAnnouncementPostRequest: (data: IAnnouncementData) => void;
+  homeData: IAnnouncement[];
+  setHomeData: React.Dispatch<React.SetStateAction<IAnnouncement[]>>;
+  handleAnnouncementPostRequest: (data: IAnnouncementRequest) => void;
   handleLoginRequest: (data: ILoginData) => void
   handleRegisterRequest: (data: IUser) => void
 }
@@ -36,11 +17,11 @@ export interface IApi {
 const ApiContext = createContext<IApi>({} as IApi);
 
 export const ApiProvider = ({ children }: IApiProvider) => {
-  const [homeData, setHomeData] = useState<IAnnouncementData[]>(
-    [] as IAnnouncementData[]
+  const [homeData, setHomeData] = useState<IAnnouncement[]>(
+    [] as IAnnouncement[]
   );
 
-  const handleAnnouncementPostRequest = async (data: IAnnouncementData) => {
+  const handleAnnouncementPostRequest = async (data: IAnnouncementRequest) => {
     const token = localStorage.getItem("token")
     const config = {
       headers: { Authorization: `Bearer ${token}` }
@@ -61,6 +42,8 @@ export const ApiProvider = ({ children }: IApiProvider) => {
       .post("http://localhost:3000/users/login/", data)
       .then((res) => {
         localStorage.setItem("token", res.data.token)
+        let decoded: any = jwt_decode(res.data.token)
+        localStorage.setItem("id", decoded.id)
         toast.success("OK")
       })
       .catch((error) => {
@@ -79,6 +62,8 @@ export const ApiProvider = ({ children }: IApiProvider) => {
         toast.error("ERROR")
       });
   };
+
+
 
   return (
     <ApiContext.Provider value={{ homeData, handleAnnouncementPostRequest, setHomeData, handleLoginRequest, handleRegisterRequest}}>
