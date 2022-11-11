@@ -41,6 +41,7 @@ export interface IAnnouncement extends IAnnouncementRequest{
 export interface ILoginData {
   email: string;
   password: string;
+}
 
 export interface IDecodedData {
   id: string;
