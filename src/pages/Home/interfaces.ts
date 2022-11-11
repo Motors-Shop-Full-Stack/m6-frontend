@@ -3,7 +3,7 @@ export interface ICardProps {
 }
 
 export interface IAnnouncement {
-  id: number;
+  id: string;
   announceType: string;
   announceCover: string;
   category: string;
