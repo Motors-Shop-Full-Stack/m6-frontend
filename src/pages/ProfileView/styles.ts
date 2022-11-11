@@ -11,6 +11,7 @@ export const GradientContainer = styled.div`
     rgba(69, 41, 230, 1) 50%
   );
   padding: 80px 0px;
+  height: 100vh;
 `;
 
 export const UserBox = styled.div`
