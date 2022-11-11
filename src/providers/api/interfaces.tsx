@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface IUserData {
   name: string;
   email: string;
@@ -15,8 +17,34 @@ export interface IUserData {
   password: string;
 }
 
+export interface IApiProvider {
+  children: ReactNode;
+}
+
+export interface IAnnouncementRequest {
+  announceType: string;
+  title: string;
+  fabricationYear: number;
+  km: number;
+  price: string;
+  description: string;
+  category: string | undefined;
+  announceCover: string;
+}
+
+export interface IAnnouncement extends IAnnouncementRequest{
+    id: string
+    is_active: boolean
+    category: string
+}
+
+export interface ILoginData {
+  email: string;
+  password: string;
+
 export interface IDecodedData {
   id: string;
   email: string;
   isActive: string;
+
 }

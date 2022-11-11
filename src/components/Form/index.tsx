@@ -190,7 +190,7 @@ const Form = ({ name }: IFormProps) => {
       street: data.street,
       number: data.number,
       complement: data.complement,
-      accountType: data.accountType,
+      accountType: accountType,
       password: data.password,
     };
 

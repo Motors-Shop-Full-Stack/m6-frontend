@@ -7,7 +7,7 @@ export const BannerWrapper = styled.div`
   align-items: center;
   background: var(--brand2);
   padding: 0px 10px;
-  min-height: 580px;
+  height: calc(100vh - 80px);
   gap: 50px;
 
   h1 {

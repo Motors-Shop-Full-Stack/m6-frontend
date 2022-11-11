@@ -1,7 +1,7 @@
-import Header from "../../components/Header";
 import Form from "../../components/Form";
 import { MainDiv } from "./styles";
 import {Toaster} from "react-hot-toast"
+import Header from "../../components/Header";
 
 const Register = () => {
   return (
