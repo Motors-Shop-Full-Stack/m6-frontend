@@ -11,8 +11,6 @@ interface IHeaderData {
   handleClose: () => void;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  getInitials: (name: string) => string;
-  formatName: (name: string) => string;
   anchorEl: HTMLElement | null
 }
 
@@ -32,17 +30,6 @@ export const HeaderProvider = ({ children }: IProviderProps) => {
   ///Mobile dropdown variables
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
-  const getInitials = (name: string) => {
-    return (
-      name.split(" ")[0][0] + name.split(" ")[name.split(" ").length - 1][0]
-    );
-  };
-
-  const formatName = (name: string) => {
-    return (
-      name.split(" ")[0] + " " + name.split(" ")[name.split(" ").length - 1]
-    );
-  };
 
   return (
     <HeaderContext.Provider
@@ -52,8 +39,6 @@ export const HeaderProvider = ({ children }: IProviderProps) => {
         handleClose,
         isOpen,
         setIsOpen,
-        getInitials,
-        formatName,
         anchorEl
       }}
     >

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { IUser } from "../components/Form/interfaces"
+import { IAnnouncement } from "../pages/Home/interfaces"
 
 
-export default function useFetch(url: string, config: any | undefined){
+export default function useFetch(url: string, config?: any | undefined){
 
-    const [data, setData] = useState<IUser | null>()
+    const [data, setData] = useState<any>()
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState<boolean>(false)
 
