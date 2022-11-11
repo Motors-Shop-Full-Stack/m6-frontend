@@ -21,7 +21,7 @@ const Card = ({ data }: ICardProps) => {
 
   return (
     <Container>
-      <ImageBox url={data.announceCover} onClick={() => history.push(`product/${data.id}`)}>
+      <ImageBox url={data.announceCover} onClick={() => history.push(`/product/${data.id}`)}>
         {data.is_active ? (
           <div className="tag">Ativo</div>
         ) : (

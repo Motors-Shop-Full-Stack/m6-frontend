@@ -1,5 +1,6 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import useFetch from "../../hooks/useFetch";
 import {
   AdvertiserContainer,
   BuyButton,
@@ -14,8 +15,22 @@ import {
   UserIcon,
 } from "./styles";
 import Carro from "./test.png";
+import { useParams } from "react-router-dom";
+import { formatName, getInitials } from "../../utils/stringFormaters";
+import { useHistory } from "react-router-dom";
 
 const Product = () => {
+  const params: {id: "string"} = useParams()
+  const history = useHistory()
+
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("id");
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  const { data } = useFetch(`http://localhost:3000/announcements/${params.id}`, config);
+
   return (
     <div>
       <Header />
@@ -23,26 +38,23 @@ const Product = () => {
         <div>
           <LeftColumn>
             <PhotoContainer>
-              <img src={Carro} alt="carro" />
+              <img src={data && data.announceCover} alt="carro" />
             </PhotoContainer>
             <InfoContainer>
-              <h2>Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200</h2>
+              <h2>{data && data.title}</h2>
               <SpanContainer>
                 <div>
-                  <span>2013</span>
-                  <span>0 KM</span>
+                  <span>{data && data.fabricationYear}</span>
+                  <span>{data && data.km}</span>
                 </div>
-                <span>R$ 00.000,00</span>
+                <span>R$ {data && data.price}</span>
               </SpanContainer>
               <BuyButton>Comprar</BuyButton>
             </InfoContainer>
             <DescriptionContainer>
               <h2>Descrição</h2>
               <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
+                {data && data.description}
               </p>
             </DescriptionContainer>
             <div></div>
@@ -60,13 +72,12 @@ const Product = () => {
               </div>
             </GalleryContainer>
             <AdvertiserContainer>
-              <UserIcon>SL</UserIcon>
-              <h3>Samuel Leão</h3>
+              <UserIcon>{data && getInitials(data.user.name)}</UserIcon>
+              <h3>{data && formatName(data.user.name)}</h3>
               <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's
+              {data && data.user.description}
               </p>
-              <button>Ver todos os anuncios</button>
+              <button onClick={() => history.push(`/profile/${data.user.id}`)}>Ver todos os anuncios</button>
             </AdvertiserContainer>
           </RightColumn>
         </div>
