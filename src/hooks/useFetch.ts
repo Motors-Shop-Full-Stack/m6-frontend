@@ -23,7 +23,7 @@ export default function useFetch(url: string, config: any | undefined){
                 }
             }
         )()
-    })
+    },[])
 
     return { data, error, loading }
 

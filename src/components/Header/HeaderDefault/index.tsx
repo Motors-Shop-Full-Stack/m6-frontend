@@ -18,14 +18,15 @@ const HeaderDefault = () => {
         </div>
         <div className="container-nav">
           <nav>
+
             <Item isOpen={isOpen}>
-              <a>Carros</a>
+              <>Carros</>
             </Item>
             <Item isOpen={isOpen}>
-              <a>Motos</a>
+              <>Motos</>
             </Item>
             <Item isOpen={isOpen}>
-              <a>Leilão</a>
+              <>Leilão</>
             </Item>
           </nav>
           <UserBox isOpen={isOpen}>

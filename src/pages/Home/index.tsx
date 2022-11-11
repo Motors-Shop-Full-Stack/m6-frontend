@@ -18,7 +18,7 @@ const Home = () => {
       .get("http://localhost:3000/announcements/")
       .then((response) => setHomeData(response.data))
       .catch((error) => console.log(error));
-  }, [homeData]);
+  }, []);
 
   return (
     <>

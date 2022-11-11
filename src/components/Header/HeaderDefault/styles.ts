@@ -5,6 +5,8 @@ interface Props {
 }
 
 export const Container = styled.header<Props>`
+  position: fixed;
+  top: 0;
   display: flex;
   flex-direction: ${(props) => (props.isOpen ? "column" : "row")};
   align-items: center;
@@ -20,6 +22,7 @@ export const Container = styled.header<Props>`
   font-size: 16px;
   line-height: 28px;
   color: #495057;
+  border-bottom: 2px shadow grey;
 
   .container-img {
     display: flex;
@@ -56,14 +59,20 @@ export const Container = styled.header<Props>`
     .container-img {
       border-bottom: none;
       margin-left: 25px;
-      width: 30%;
+      width: fit-content;
+      
       .icon {
         display: none;
       }
     }
     .container-nav {
       display: flex;
-      width: 70%;
+      width: 100%;
+      max-width: 60%;
+      @media (min-width: 1024px){
+        max-width: 50%;
+      }
+
       nav {
         display: flex;
         justify-content: space-around;
@@ -73,17 +82,6 @@ export const Container = styled.header<Props>`
         
       }
     }
-    .container-icon {
-      display: none;
-    }
-  }
-  @media (min-width: 1024px) {
-    .container-img {
-      width: 45%;
-    }
-    .container-nav {
-      width: 55%;
-    }
   }
 `;
 
@@ -91,12 +89,10 @@ export const Item = styled.div<Props>`
   display: ${(props) => (props.isOpen ? "flex" : "none")};
   align-items: center;
   margin: 20px 0;
-  cursor: pointer;
-  font-family: "Inter";
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
+  cursor: pointer;
 
   @media (min-width: 768px) {
     display: flex;
@@ -110,8 +106,6 @@ export const UserBox = styled.div<Props>`
   margin: 10px 0;
   
   h5 {
-    font-family: "Inter";
-    font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 28px;
@@ -128,13 +122,6 @@ export const UserBox = styled.div<Props>`
     align-items: center;
     cursor: pointer;
 
-  }
-  .user_box-div {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    justify-content: start;
-    margin-top: 5px;
   }
 
   @media (min-width: 768px) {
@@ -154,24 +141,5 @@ export const UserBox = styled.div<Props>`
       padding: 0;
     }
 
-    .user_box-div{
-      margin-top: 0px;
-    }
   }
-  @media (min-width: 1024px) {
-    width: 80%;
-  }
-
   `;
-
-export const UserIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  width: 32px;
-  height: 32px;
-  background: #5126ea;
-  border-radius: 150%;
-  margin: 0 15px 0 15px;
-`;

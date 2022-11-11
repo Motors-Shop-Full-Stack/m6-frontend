@@ -5,6 +5,8 @@ interface Props {
 }
 
 export const Container = styled.header<Props>`
+  position: fixed;
+  top: 0;
   display: flex;
   flex-direction: ${(props) => (props.isOpen ? "column" : "row")};
   align-items: center;
@@ -27,7 +29,7 @@ export const Container = styled.header<Props>`
     align-items: center;
     width: 100%;
     height: 80px;
-    border-bottom: 2px solid #dee2e6;
+    border-bottom: -2px solid #dee2e6;
     padding: 1rem 1rem;
     
     .icon {

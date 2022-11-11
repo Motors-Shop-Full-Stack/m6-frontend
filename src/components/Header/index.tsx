@@ -1,4 +1,4 @@
-import HeaderDefault from "./HeaderDefault/indes";
+import HeaderDefault from "./HeaderDefault";
 import HeaderLogged from "./HeaderLogged";
 
 const Header = ({ data }: any) => {
