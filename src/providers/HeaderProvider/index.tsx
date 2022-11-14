@@ -12,6 +12,7 @@ interface IHeaderData {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   anchorEl: HTMLElement | null
+  setAnchorEl: React.Dispatch<React.SetStateAction<null | HTMLElement>>;
 }
 
 const HeaderContext = createContext<IHeaderData>({} as IHeaderData);
@@ -22,7 +23,6 @@ export const HeaderProvider = ({ children }: IProviderProps) => {
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
-    console.log(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -39,7 +39,8 @@ export const HeaderProvider = ({ children }: IProviderProps) => {
         handleClose,
         isOpen,
         setIsOpen,
-        anchorEl
+        anchorEl,
+        setAnchorEl
       }}
     >
       {children}

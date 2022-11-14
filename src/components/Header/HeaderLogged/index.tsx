@@ -8,8 +8,15 @@ import { getInitials, formatName } from "../../../utils/stringFormaters";
 import { useHistory } from "react-router-dom";
 
 const HeaderLogged = ({data}: any) => {
-  const { isOpen, setIsOpen, open, handleClick, handleClose, anchorEl } = useHeader();
+  const { isOpen, setIsOpen, open, handleClick, handleClose, anchorEl, setAnchorEl } = useHeader();
   const history = useHistory()
+
+  const visitProfile = () => {
+    let id = localStorage.getItem("id")
+    history.push(`/profile/${id}/`)
+    setAnchorEl(null)
+  }
+
     return ( 
         <Container isOpen={isOpen}>
             <div className="container-img">
@@ -51,6 +58,7 @@ const HeaderLogged = ({data}: any) => {
                       open={open}
                       onClose={handleClose}
                     >
+                      <MenuItem onClick={()=> visitProfile()}>Ver perfil</MenuItem>
                       <MenuItem>Editar perfil</MenuItem>
                       <MenuItem>Editar endereço</MenuItem>
                       <MenuItem>Minhas compras</MenuItem>
