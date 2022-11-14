@@ -19,7 +19,7 @@ export const ApiProvider = ({ children }: IApiProvider) => {
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     };
-    
+
     await axios
       .post("http://localhost:3000/announcements/", data, config)
       .then((res) => {
@@ -31,8 +31,7 @@ export const ApiProvider = ({ children }: IApiProvider) => {
   };
 
   const handleLoginRequest = async (data: ILoginData) => {
-  
-  
+
     await axios
       .post("http://localhost:3000/users/login/", data)
       .then((res) => {
@@ -47,6 +46,7 @@ export const ApiProvider = ({ children }: IApiProvider) => {
         console.log(error);
         toast.error("ERROR")
       });
+
   };
 
   const handleRegisterRequest = async (data: IUserData) => {
@@ -63,7 +63,7 @@ export const ApiProvider = ({ children }: IApiProvider) => {
 
 
   return (
-    <ApiContext.Provider value={{ homeData, handleAnnouncementPostRequest, setHomeData, handleLoginRequest, handleRegisterRequest}}>
+    <ApiContext.Provider value={{ homeData, handleAnnouncementPostRequest, setHomeData, handleLoginRequest, handleRegisterRequest }}>
       {children}
     </ApiContext.Provider>
   );

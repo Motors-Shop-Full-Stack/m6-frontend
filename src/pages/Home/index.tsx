@@ -68,7 +68,7 @@ const Home = () => {
           {!!homeData &&
             homeData.map((item: IAnnouncement) => {
               if (item.announceType === "auction") {
-                return <AuctionCard key={item.id} data={item}></AuctionCard>;
+                return <AuctionCard key={item.id} data={item} isAdmin={false}></AuctionCard>;
               }
             })}
         </ProductList>
@@ -76,7 +76,7 @@ const Home = () => {
           {!!homeData &&
             homeData.map((item: IAnnouncement) => {
               if (item.announceType === "sale" && item.category === "car") {
-                return <Card key={item.id} data={item}></Card>;
+                return <Card key={item.id} data={item} isAdmin={false}></Card>;
               }
             })}
         </ProductList>
@@ -87,7 +87,7 @@ const Home = () => {
                 item.announceType === "sale" &&
                 item.category === "motorcycle"
               ) {
-                return <Card key={item.id} data={item}></Card>;
+                return <Card key={item.id} data={item} isAdmin={false}></Card>;
               }
             })}
         </ProductList>

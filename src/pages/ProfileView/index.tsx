@@ -17,13 +17,15 @@ const ProfileView = () => {
   const params: {id: string} = useParams()
 
   const { data } = useFetch(`http://localhost:3000/users/${params.id}`);
+  const id = localStorage.getItem("id")
+  const isAdmin = params.id === id
 
   return (
     <>
       <Modal name="first" pTop="4%" pLeft="0%">
         <Form name="createad" />
       </Modal>
-      <Header data={data}></Header>
+      <Header></Header>
       <GradientContainer>
         <UserBox>
           <div className="userbox-avatar">{data && getInitials(data.name)}</div>
@@ -57,7 +59,7 @@ const ProfileView = () => {
         {!!data &&
             data.announcements.map((item: IAnnouncement) => {
                 if (item.announceType === "sale" && item.category === "car") {
-                  return <Card key={item.id} data={item}></Card>;
+                  return <Card key={item.id} data={item} isAdmin={isAdmin}></Card>;
                 }
             })}
         </ProductList>
@@ -65,7 +67,7 @@ const ProfileView = () => {
         {!!data &&
             data.announcements.map((item: IAnnouncement) => {
                 if (item.announceType === "sale" && item.category === "motorcycle") {
-                  return <Card key={item.id} data={item}></Card>;
+                  return <Card key={item.id} data={item} isAdmin={isAdmin}></Card>;
                 }
             })}
         </ProductList>

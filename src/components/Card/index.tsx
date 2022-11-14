@@ -13,11 +13,9 @@ import Test from "./test.png";
 import { ICardProps } from "../../pages/Home/interfaces";
 import { useHistory } from "react-router-dom";
 
-const Card = ({ data }: ICardProps) => {
+const Card = ({ data, isAdmin }: ICardProps) => {
 
   const history = useHistory()
-  ///Autentication States Simulation
-  const [isAdmin] = React.useState<boolean>(false);
 
   return (
     <Container>
