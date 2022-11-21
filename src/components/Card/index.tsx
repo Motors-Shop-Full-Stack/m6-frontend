@@ -13,23 +13,23 @@ import Test from "./test.png";
 import { ICardProps } from "../../pages/Home/interfaces";
 import { useHistory } from "react-router-dom";
 
-const Card = ({ data, isAdmin }: ICardProps) => {
+const Card = ({ announcement, isAdmin }: ICardProps) => {
 
   const history = useHistory()
 
   return (
     <Container>
-      <ImageBox url={data.announceCover} onClick={() => history.push(`/product/${data.id}`)}>
-        {data.is_active ? (
+      <ImageBox url={announcement.announceCover} onClick={() => history.push(`/product/${announcement.id}`)}>
+        {announcement.is_active ? (
           <div className="tag">Ativo</div>
         ) : (
           <div className="tag">Inativo</div>
         )}
-        <img alt="product" src={data.announceCover}></img>
+        <img alt="product" src={announcement.announceCover}></img>
       </ImageBox>
       <TextBox>
-        <h5>{data.title}</h5>
-        <p>{data.description}</p>
+        <h5>{announcement.title}</h5>
+        <p>{announcement.description}</p>
       </TextBox>
       {isAdmin ? (
         <ProfileBox>
@@ -40,11 +40,11 @@ const Card = ({ data, isAdmin }: ICardProps) => {
 
       <InfoBox>
         <div className="info-1">
-          <InfoDetail>{data.km} KM</InfoDetail>
-          <InfoDetail>{data.fabricationYear.toString()}</InfoDetail>
+          <InfoDetail>{announcement.km} KM</InfoDetail>
+          <InfoDetail>{announcement.fabricationYear.toString()}</InfoDetail>
         </div>
         <div>
-          <h5>R$ {data.price}</h5>
+          <h5>R$ {announcement.price}</h5>
         </div>
       </InfoBox>
       {isAdmin ? (

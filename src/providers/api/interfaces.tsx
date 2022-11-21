@@ -50,10 +50,31 @@ export interface IDecodedData {
 
 }
 
+export interface IUser{
+  name: string
+  email: string
+  cpf: string
+  cel: string
+  birthdate: string
+  description: string
+  cep: string
+  state: string
+  city: string
+  street: string
+  number: string
+  complement: string
+  accountType: string
+  password: string
+  announcements: IAnnouncement[]
+}
+
 export interface IApi {
   homeData: IAnnouncement[];
   setHomeData: React.Dispatch<React.SetStateAction<IAnnouncement[]>>;
   handleAnnouncementPostRequest: (data: IAnnouncementRequest) => void;
   handleLoginRequest: (data: ILoginData) => void
   handleRegisterRequest: (data: IUserData) => void
+  user: IUser | undefined
+  setUser: React.Dispatch<React.SetStateAction<IUser | undefined>>;
+  fetchUser: () => Promise<void>
 }

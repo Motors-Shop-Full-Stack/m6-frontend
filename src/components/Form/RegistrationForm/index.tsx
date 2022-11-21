@@ -14,7 +14,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
     };
 
     const handleRegister = (data: any) => {
-
+        
         const requestObj = {
             name: data.name,
             email: data.email,
@@ -31,6 +31,8 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
             accountType: accountType,
             password: data.password,
         };
+
+        console.log(accountType)
 
         handleRegisterRequest(requestObj)
     };
@@ -251,9 +253,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
                 />
                 <Button
                     type={"submit"}
-                    value={"auction"}
                     name={"sale"}
-                    onClick={(e) => handleAccountType(e)}
                     borderC={"--brand1"}
                     backgroundC={"--brand1"}
                     fontC={"--grey10"}

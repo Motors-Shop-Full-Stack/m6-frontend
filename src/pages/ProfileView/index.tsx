@@ -6,19 +6,27 @@ import { useModal } from "../../providers/modal";
 import Form from "../../components/Form";
 import { Toaster } from "react-hot-toast";
 import useFetch from "../../hooks/useFetch";
-import {getInitials} from "../../utils/stringFormaters"
+import { getInitials } from "../../utils/stringFormaters"
 import { useParams } from "react-router-dom"
 import ProductList from "../../components/ProductList";
 import { IAnnouncement } from "../Home/interfaces";
-import  Card  from "../../components/Card";
+import Card from "../../components/Card";
+import { useApi } from "../../providers/api";
+import { useEffect } from "react";
 
 const ProfileView = () => {
   const { handleFirstModal } = useModal();
-  const params: {id: string} = useParams()
-
-  const { data } = useFetch(`http://localhost:3000/users/${params.id}`);
-  const id = localStorage.getItem("id")
+  const params: { id: string } = useParams()
+  const {user, fetchUser} = useApi()
+  
+  useEffect(()=>{
+    fetchUser()
+  }, [])
+  
+  const id = localStorage.getItem("motorshop-id")
   const isAdmin = params.id === id
+  const isSeller = user && user.accountType === "seller"
+
 
   return (
     <>
@@ -28,47 +36,48 @@ const ProfileView = () => {
       <Header></Header>
       <GradientContainer>
         <UserBox>
-          <div className="userbox-avatar">{data && getInitials(data.name)}</div>
+          <div className="userbox-avatar">{user && getInitials(user.name)}</div>
           <div className="userbox-info">
-            <h5>{data && data.name}</h5>
+            <h5>{user && user.name}</h5>
             <UserType>
-              {data && data.accountType === "seller"
-                ? "Vendedor"
-                : "Anunciante"}
+              {isSeller
+                ? "Anunciante"
+                : "Comprador"}
             </UserType>
           </div>
           <div className="userbox-paragraph">
-            <p>{data && data.description}</p>
+            <p>{user && user.description}</p>
           </div>
-          <div>
+          {isSeller && isAdmin ? (<div>
             <Button
               borderC="--brand1"
               backgroundC="--whiteFixed"
               fontC="--brand1"
-              width="100px"
+              width="140px"
               height="50px"
               onClick={() => handleFirstModal()}
             >
-              Cadastrar
+              Criar anuncio
             </Button>
-          </div>
+          </div>) : (null)}
+
         </UserBox>
       </GradientContainer>
       <ListsWrapper>
-      <ProductList gap="20px" title="Carros" id="cars">
-        {!!data &&
-            data.announcements.map((item: IAnnouncement) => {
-                if (item.announceType === "sale" && item.category === "car") {
-                  return <Card key={item.id} data={item} isAdmin={isAdmin}></Card>;
-                }
+        <ProductList gap="20px" title="Carros" id="cars">
+          {!!user &&
+            user.announcements.map((item: IAnnouncement) => {
+              if (item.announceType === "sale" && item.category === "car") {
+                return <Card key={item.id} announcement={item} isAdmin={isAdmin}></Card>;
+              }
             })}
         </ProductList>
         <ProductList gap="20px" title="Motos" id="bikes">
-        {!!data &&
-            data.announcements.map((item: IAnnouncement) => {
-                if (item.announceType === "sale" && item.category === "motorcycle") {
-                  return <Card key={item.id} data={item} isAdmin={isAdmin}></Card>;
-                }
+          {!!user &&
+            user.announcements.map((item: IAnnouncement) => {
+              if (item.announceType === "sale" && item.category === "motorcycle") {
+                return <Card key={item.id} announcement={item} isAdmin={isAdmin}></Card>;
+              }
             })}
         </ProductList>
       </ListsWrapper>
