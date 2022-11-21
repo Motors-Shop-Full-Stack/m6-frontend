@@ -5,13 +5,13 @@ import React from "react";
 import Button from "../Button";
 import { ICardProps } from "../../pages/Home/interfaces";
 
-const AuctionCard = ({ data }: ICardProps) => {
+const AuctionCard = ({ announcement }: ICardProps) => {
   ///Autentication States Simulation
   const [isAdmin] = React.useState<boolean>(false);
 
   return (
     <Container>
-      <ContentBox url={data.announceCover}>
+      <ContentBox url={announcement.announceCover}>
         <div className="content-timer">
           <div>
             <AiOutlineClockCircle className="clock-icon" />
@@ -19,8 +19,8 @@ const AuctionCard = ({ data }: ICardProps) => {
           </div>
         </div>
         <div className="content-text">
-          <h1>{data.title}</h1>
-          <p>{data.description}</p>
+          <h1>{announcement.title}</h1>
+          <p>{announcement.description}</p>
           {isAdmin ? null : (
             <div className="content_profile-box">
               <div className="profile-box_initial">R</div>
@@ -30,11 +30,11 @@ const AuctionCard = ({ data }: ICardProps) => {
 
           <div className="content_infos-box">
             <div className="info-detail">
-              <DetailBox>{data.fabricationYear.toString()}</DetailBox>
-              <DetailBox>{data.km}KM</DetailBox>
+              <DetailBox>{announcement.fabricationYear.toString()}</DetailBox>
+              <DetailBox>{announcement.km}KM</DetailBox>
             </div>
             <div className="info-price">
-              <h5>R$ {data.price}</h5>
+              <h5>R$ {announcement.price}</h5>
             </div>
           </div>
         </div>

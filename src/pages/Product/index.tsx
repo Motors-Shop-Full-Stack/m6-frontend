@@ -20,17 +20,11 @@ import { formatName, getInitials } from "../../utils/stringFormaters";
 import { useHistory } from "react-router-dom";
 
 const Product = () => {
-  const params: {id: "string"} = useParams()
+  const params: {id: string} = useParams()
   const history = useHistory()
 
-  const token = localStorage.getItem("token");
-  const userId = localStorage.getItem("id");
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
-
-  const { data } = useFetch(`http://localhost:3000/announcements/${params.id}`, config);
-
+  const { data } = useFetch(`http://localhost:3000/announcements/${params.id}`);
+  
   return (
     <div>
       <Header />

@@ -1,5 +1,5 @@
 export interface ICardProps {
-  data: IAnnouncement;
+  announcement: IAnnouncement;
   isAdmin: boolean
 }
 

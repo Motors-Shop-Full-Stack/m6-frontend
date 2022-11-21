@@ -12,14 +12,7 @@ import { IAnnouncement } from "./interfaces";
 import { Toaster } from "react-hot-toast";
 
 const Home = () => {
-  const { homeData, setHomeData } = useApi();
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/announcements/")
-      .then((response) => setHomeData(response.data))
-      .catch((error) => console.log(error));
-  }, []);
+  const { homeData } = useApi();
 
   return (
     <>
@@ -68,7 +61,7 @@ const Home = () => {
           {!!homeData &&
             homeData.map((item: IAnnouncement) => {
               if (item.announceType === "auction") {
-                return <AuctionCard key={item.id} data={item} isAdmin={false}></AuctionCard>;
+                return <AuctionCard key={item.id} announcement={item} isAdmin={false}></AuctionCard>;
               }
             })}
         </ProductList>
@@ -76,7 +69,7 @@ const Home = () => {
           {!!homeData &&
             homeData.map((item: IAnnouncement) => {
               if (item.announceType === "sale" && item.category === "car") {
-                return <Card key={item.id} data={item} isAdmin={false}></Card>;
+                return <Card key={item.id} announcement={item} isAdmin={false}></Card>;
               }
             })}
         </ProductList>
@@ -87,7 +80,7 @@ const Home = () => {
                 item.announceType === "sale" &&
                 item.category === "motorcycle"
               ) {
-                return <Card key={item.id} data={item} isAdmin={false}></Card>;
+                return <Card key={item.id} announcement={item} isAdmin={false}></Card>;
               }
             })}
         </ProductList>

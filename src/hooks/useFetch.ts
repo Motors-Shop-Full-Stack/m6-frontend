@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { IUser } from "../components/Form/interfaces"
-import { IAnnouncement } from "../pages/Home/interfaces"
+import axiosInstance from "../services/api"
 
 
-export default function useFetch(url: string, config?: any | undefined){
+export default function useFetch(url: string){
 
     const [data, setData] = useState<any>()
     const [error, setError] = useState(null)
@@ -12,10 +11,10 @@ export default function useFetch(url: string, config?: any | undefined){
 
     useEffect(() => {
         (
-            async function(){
+            async function refetch(){
                 try{
                     setLoading(true)
-                    const response = await axios.get(url, config)
+                    const response = await axiosInstance.get(url)
                     setData(response.data)
                 }catch(err: any){
                     setError(err)
