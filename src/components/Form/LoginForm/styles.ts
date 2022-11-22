@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-//login
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -11,10 +10,21 @@ export const StyledForm = styled.form`
   width: 200px;
   height: 310px;
   label {
-    font-size: 13px;
+    font-family: var(--inter);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
   }
   input {
-    font-size: 14px;
+    font-family: var(--inter);
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+    padding: 10px;
+    margin-top: 5px;
   }
   button {
     margin: 10px 0px 10px 0px;
@@ -31,7 +41,7 @@ export const TitleForm = styled.div`
     color: var(--grey0);
     font-family: var(--lexend);
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
   }
 `;
 

@@ -28,21 +28,15 @@ export const registerSchema = yup.object().shape({
         .oneOf([yup.ref("password")], "Password does not match!"),
     cpf: yup
         .string()
-        .required("Campo obrigatório")
-        .max(11, "Máximo 11 caracteres")
-        .matches(/^[0-9]*$/, "Apenas números"),
+        .required("Campo obrigatório"),
     cel: yup
         .string()
-        .required("Campo obrigatório")
-        .max(11, "Máximo 11 caracteres")
-        .matches(/^[0-9]*$/, "Apenas números"),
+        .required("Campo obrigatório"),
     birthdate: yup.string().required("Campo obrigatório"),
     description: yup.string().required("Campo obrigatório"),
     cep: yup
         .string()
-        .required("Campo obrigatótio")
-        .max(8, "Máximo 8 caracteres")
-        .matches(/^[0-9]*$/, "Apenas números"),
+        .required("Campo obrigatótio"),
     state: yup.string(),
     city: yup
         .string()
