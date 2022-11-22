@@ -32,10 +32,10 @@ export interface IAnnouncementRequest {
   announceCover: string;
 }
 
-export interface IAnnouncement extends IAnnouncementRequest{
-    id: string
-    is_active: boolean
-    category: string
+export interface IAnnouncement extends IAnnouncementRequest {
+  id: string;
+  is_active: boolean;
+  category: string;
 }
 
 export interface ILoginData {
@@ -47,34 +47,34 @@ export interface IDecodedData {
   id: string;
   email: string;
   isActive: string;
-
 }
 
-export interface IUser{
-  name: string
-  email: string
-  cpf: string
-  cel: string
-  birthdate: string
-  description: string
-  cep: string
-  state: string
-  city: string
-  street: string
-  number: string
-  complement: string
-  accountType: string
-  password: string
-  announcements: IAnnouncement[]
+export interface IUser {
+  name: string;
+  email: string;
+  cpf: string;
+  cel: string;
+  birthdate: string;
+  description: string;
+  cep: string;
+  state: string;
+  city: string;
+  street: string;
+  number: string;
+  complement: string;
+  accountType: string;
+  password: string;
+  announcements: IAnnouncement[];
 }
 
 export interface IApi {
   homeData: IAnnouncement[];
+  isSign: boolean;
   setHomeData: React.Dispatch<React.SetStateAction<IAnnouncement[]>>;
   handleAnnouncementPostRequest: (data: IAnnouncementRequest) => void;
-  handleLoginRequest: (data: ILoginData) => void
-  handleRegisterRequest: (data: IUserData) => void
-  user: IUser | undefined
+  handleLoginRequest: (data: ILoginData) => Promise<void | string>;
+  handleRegisterRequest: (data: IUserData) => Promise<void>;
+  user: IUser | undefined;
   setUser: React.Dispatch<React.SetStateAction<IUser | undefined>>;
-  fetchUser: () => Promise<void>
+  fetchUser: () => Promise<void>;
 }

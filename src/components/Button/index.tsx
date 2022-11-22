@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { StyledButton } from "./styles";
 
-interface IButtonProps {
+interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   type?: "button" | "submit" | "reset" | undefined;
   backgroundC: string;
