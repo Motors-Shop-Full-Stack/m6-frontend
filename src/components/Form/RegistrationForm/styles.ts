@@ -21,11 +21,15 @@ export const FormRegisterTitle = styled.div`
   width: 94%;
   height: 20px;
   margin-top: 15px;
-  h1 {
-    font-family: var(-lexend);
-    font-weight: bold;
+  h2 {
+    font-family: var(--lexend);
     font-size: 19px;
     color: var(--grey0);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
   }
 `;
 
@@ -35,10 +39,14 @@ export const FormRegisterSubTitle = styled.div`
   height: 20px;
   margin-bottom: 5px;
   margin: 0px 0px 7px 0px;
-  h2 {
+  margin: 15px;
+  h4 {
     font-family: var(--inter);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
   }
 `;
 
@@ -52,10 +60,18 @@ export const FormRegisterPersonalInfo = styled.section`
   margin: 15px 0px 0px 0px;
   font-family: "Inter";
   label {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
   }
   input {
-    font-size: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+    padding: 10px;
   }
 `;
 
@@ -67,11 +83,20 @@ export const FormRegisterAddresInfo = styled.section`
   width: 94%;
   height: 310px;
   margin: 15px 0px 0px 0px;
+  font-family: var(--inter);
   label {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
   }
   input {
-    font-size: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+    padding: 10px;
   }
 `;
 
@@ -90,11 +115,20 @@ export const FormRegisterAddressAccount = styled.section`
   width: 94%;
   height: 315px;
   margin: 15px 0px 0px 0px;
+  font-family: var(--inter);
   label {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
   }
   input {
-    font-size: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+    padding: 10px;
   }
   button {
     font-size: 12px;

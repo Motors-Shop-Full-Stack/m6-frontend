@@ -12,7 +12,7 @@ const HeaderLogged = ({data}: any) => {
   const history = useHistory()
 
   const visitProfile = () => {
-    let id = localStorage.getItem("id")
+    let id = localStorage.getItem("motorshop-id")
     history.push(`/profile/${id}/`)
     setAnchorEl(null)
   }

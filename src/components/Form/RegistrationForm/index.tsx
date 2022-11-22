@@ -3,6 +3,9 @@ import { useApi } from "../../../providers/api";
 import { FormRegister, FormRegisterAccountBox, FormRegisterAddresInfo, FormRegisterAddressAccount, FormRegisterAddressBox, FormRegisterPersonalInfo, FormRegisterSelectBox, FormRegisterSubTitle, FormRegisterTitle } from "./styles";
 import Button from "../../Button";
 import Input from "../../Input";
+import { cellMask, cepMask, cpfMask } from "./inputMasks";
+import {format} from "date-fns"
+import { parseISO } from "date-fns/esm";
 
 const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
 
@@ -18,11 +21,11 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
         const requestObj = {
             name: data.name,
             email: data.email,
-            cpf: data.cpf,
-            cel: data.cel,
-            birthdate: data.birthdate,
+            cpf: data.cpf.replaceAll(".", "").replace("-", ""),
+            cel: data.cel.replace("(", "").replace(")", "").replace("-", "").replace(" ", ""),
+            birthdate: format(parseISO(data.birthdate), "dd/MM/yyyy"),
             description: data.description,
-            cep: data.cep,
+            cep: data.cep.replace("-", ""),
             state: data.state,
             city: data.city,
             street: data.street,
@@ -32,19 +35,17 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
             password: data.password,
         };
 
-        console.log(accountType)
-
         handleRegisterRequest(requestObj)
     };
 
     return (
         <FormRegister onSubmit={handleSubmit(handleRegister)}>
             <FormRegisterTitle>
-                <h1>Cadastro</h1>
+                <h2>Cadastro</h2>
             </FormRegisterTitle>
             <FormRegisterPersonalInfo>
                 <FormRegisterSubTitle>
-                    <h2>Informações pessoais</h2>
+                    <h4>Informações pessoais</h4>
                 </FormRegisterSubTitle>
                 <Input
                     type={"text"}
@@ -75,19 +76,21 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
                     errors={errors?.cpf}
                     width={"100%"}
                     height={"60px"}
+                    maskFunction={cpfMask}
                 />
                 <Input
                     type={"text"}
                     description={"Celular"}
-                    placeholder={"(DDD)90000-0000"}
+                    placeholder={"(DDD)98888-7777"}
                     name={"cel"}
                     register={register}
                     errors={errors?.cel}
                     width={"100%"}
                     height={"60px"}
+                    maskFunction={cellMask}
                 />
                 <Input
-                    type={"text"}
+                    type={"date"}
                     description={"Data de nascimento"}
                     placeholder={"00/00/00"}
                     name={"birthdate"}
@@ -109,17 +112,18 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
             </FormRegisterPersonalInfo>
             <FormRegisterAddresInfo>
                 <FormRegisterSubTitle>
-                    <h2>Informações de endereço</h2>
+                    <h4>Informações de endereço</h4>
                 </FormRegisterSubTitle>
                 <Input
                     type={"text"}
                     description={"CEP"}
-                    placeholder={"00000.000"}
+                    placeholder={"00000-000"}
                     name={"cep"}
                     register={register}
                     errors={errors?.cep}
                     width={"100%"}
                     height={"60px"}
+                    maskFunction={cepMask}
                 />
                 <FormRegisterAddressBox>
                     <FormRegisterSelectBox>
@@ -201,7 +205,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
             </FormRegisterAddresInfo>
             <FormRegisterAddressAccount>
                 <FormRegisterSubTitle>
-                    <h2>Tipo de conta</h2>
+                    <h4>Tipo de conta</h4>
                 </FormRegisterSubTitle>
                 <FormRegisterAccountBox>
                     <Button
@@ -213,7 +217,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
                         backgroundC={"--brand1"}
                         fontC={"--grey10"}
                         width={"47%"}
-                        height={"30px"}
+                        height={"35px"}
                     >
                         Comprador
                     </Button>
@@ -226,7 +230,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
                         backgroundC={"--brand1"}
                         fontC={"--grey10"}
                         width={"47%"}
-                        height={"30px"}
+                        height={"35px"}
                     >
                         Anunciante
                     </Button>
