@@ -77,4 +77,5 @@ export interface IApi {
   user: IUser | undefined;
   setUser: React.Dispatch<React.SetStateAction<IUser | undefined>>;
   fetchUser: () => Promise<void>;
+  handleEditProfile: (data: any) => Promise<void>
 }

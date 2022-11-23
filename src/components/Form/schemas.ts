@@ -77,3 +77,32 @@ export const createdAdSchema = yup.object().shape({
         .required("Campo obrigatório")
         .max(200, "Máximo 200 caracteres"),
 });
+
+export const editProfileSchema = yup.object().shape({
+    name: yup
+        .string()
+        .max(50, "Máximo 50 caracteres"),
+    email: yup.string(),
+    cpf: yup
+        .string(),
+    cel: yup
+        .string(),
+    birthdate: yup.string(),
+    description: yup.string()
+});
+
+export const editAddressSchema = yup.object().shape({
+    cep: yup
+        .string(),
+    state: yup.string(),
+    city: yup
+        .string()
+        .max(50, "Máximo 50 caracteres"),
+    street: yup
+        .string()
+        .max(50, "Máximo 50 caracteres"),
+    number: yup.string(),
+    complement: yup
+        .string()
+        .max(20, "Máximo 20 caracteres"),
+});

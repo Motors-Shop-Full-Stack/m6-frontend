@@ -3,8 +3,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IFormProps, IUseFormProps} from "./interfaces";
 import LoginForm from "./LoginForm";
 import CreateAnnouncementForm from "./CreateAnnouncementForm";
-import { createdAdSchema, loginSchema, registerSchema } from "./schemas";
+import { createdAdSchema, editAddressSchema, editProfileSchema, loginSchema, registerSchema } from "./schemas";
 import RegistrationForm from "./RegistrationForm";
+import EditProfileForm from "./EditProfileForm";
+import EditAdressForm from "./EditAddressForm";
 
 const Form = ({ name }: IFormProps) => {
 
@@ -20,6 +22,10 @@ const Form = ({ name }: IFormProps) => {
         ? createdAdSchema
         : name.toLowerCase() === "register"
         ? registerSchema
+        : name.toLowerCase() === "editprofile"
+        ? editProfileSchema
+        : name.toLowerCase() === "editaddress"
+        ? editAddressSchema
         : loginSchema
     ),
   });
@@ -34,6 +40,12 @@ const Form = ({ name }: IFormProps) => {
 
     case "register":
       return <RegistrationForm handleSubmit={handleSubmit} errors={errors} register={register} />
+
+    case "editprofile":
+      return <EditProfileForm handleSubmit={handleSubmit} errors={errors} register={register} />
+
+    case "editaddress": 
+      return <EditAdressForm handleSubmit={handleSubmit} errors={errors} register={register} />
 
     default:
       return null;
