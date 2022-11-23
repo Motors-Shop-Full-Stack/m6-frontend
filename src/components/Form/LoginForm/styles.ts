@@ -7,8 +7,9 @@ export const StyledForm = styled.form`
   justify-content: center;
   background-color: var(--grey10);
   border-radius: 4px;
-  width: 200px;
+  width: 235px;
   height: 310px;
+  margin: 25px 0px 0px 0px;
   label {
     font-family: var(--inter);
     font-size: 14px;
@@ -30,13 +31,17 @@ export const StyledForm = styled.form`
     margin: 10px 0px 10px 0px;
     font-size: 14px;
   }
+  @media (min-width: 1024px) {
+    width: 335px;
+    height: 380px;
+  }
 `;
 
 export const TitleForm = styled.div`
   display: flex;
-  width: 77%;
+  width: 80%;
   height: 20px;
-  margin: 12px 0px 12px 0px;
+  margin: 12px 0px 22px 0px;
   h2 {
     color: var(--grey0);
     font-family: var(--lexend);
@@ -48,7 +53,7 @@ export const TitleForm = styled.div`
 export const DetailsBoxOne = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 77%;
+  width: 80%;
   height: 20px;
   font-size: 10px;
   font-weight: 500;
@@ -59,7 +64,7 @@ export const DetailsBoxOne = styled.div`
 export const DetailsBoxTwo = styled.div`
   display: flex;
   justify-content: center;
-  width: 77%;
+  width: 80%;
   height: 20px;
   color: var(--grey2);
   font-family: var(--inter);

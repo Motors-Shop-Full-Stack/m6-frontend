@@ -8,10 +8,10 @@ export const FormRegister = styled.form`
   background-color: var(--grey10);
   border-radius: 4px;
   width: 295px;
-  height: 1105px;
-  margin: 30px 0px 35px 0px;
+  height: 1140px;
+  margin: 105px 0px 35px 0px;
   @media (min-width: 425px) {
-    height: 1105px;
+    height: 1140px;
     width: 370px;
   }
 `;
@@ -132,6 +132,11 @@ export const FormRegisterAddressAccount = styled.section`
   }
   button {
     font-size: 12px;
+    &:focus {
+      color: var(--grey0);
+      background-color: var(--grey10);
+      border-color: var(--grey4);
+    }
   }
 `;
 
