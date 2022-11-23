@@ -6,8 +6,8 @@ import Header from "../../components/Header";
 const Register = () => {
   return (
     <>
-      <Header />
       <MainDiv>
+        <Header />
         <Form name="register" />
       </MainDiv>
       <Toaster />

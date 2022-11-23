@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 100%;
     }
 
-    :root{ 
+    :root{
         --brand1: #4529e6;
         --brand2: #5126ea;
         --brand3: #b0a6f0;
@@ -55,8 +55,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background: var(--whiteFixed);
-        &::-webkit-scrollbar {
+      background: var(--whiteFixed);
+    &::-webkit-scrollbar {
       width: 10px;
     }
     &::-webkit-scrollbar-thumb {

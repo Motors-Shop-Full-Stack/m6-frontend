@@ -38,7 +38,7 @@ const LoginForm = ({ handleSubmit, register, errors }: any) => {
         name={"email"}
         register={register}
         errors={errors?.name}
-        width={"152px"}
+        width={"80%"}
         height={"60px"}
       />
 
@@ -49,7 +49,7 @@ const LoginForm = ({ handleSubmit, register, errors }: any) => {
         name={"password"}
         register={register}
         errors={errors?.password}
-        width={"152px"}
+        width={"80%"}
         height={"60px"}
       />
 
@@ -61,7 +61,7 @@ const LoginForm = ({ handleSubmit, register, errors }: any) => {
         borderC={"--sucess3"}
         backgroundC={"--brand1"}
         fontC={"--whiteFixed"}
-        width={"152px"}
+        width={"65%"}
         height={"35px"}
       >
         Enviar
@@ -75,7 +75,7 @@ const LoginForm = ({ handleSubmit, register, errors }: any) => {
         borderC={"--grey4"}
         backgroundC={"--grey10"}
         fontC={"--grey0"}
-        width={"152px"}
+        width={"65%"}
         height={"35px"}
         type={"submit"}
       >

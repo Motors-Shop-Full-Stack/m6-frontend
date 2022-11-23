@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import AuctionCard from "../../components/AuctionCard";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
@@ -6,8 +5,7 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ProductList from "../../components/ProductList";
 import { BannerWrapper, ListsWrapper } from "./styles";
-import axios from "axios";
-import {useApi } from "../../providers/api";
+import { useApi } from "../../providers/api";
 import { IAnnouncement } from "./interfaces";
 import { Toaster } from "react-hot-toast";
 
@@ -61,7 +59,13 @@ const Home = () => {
           {!!homeData &&
             homeData.map((item: IAnnouncement) => {
               if (item.announceType === "auction") {
-                return <AuctionCard key={item.id} announcement={item} isAdmin={false}></AuctionCard>;
+                return (
+                  <AuctionCard
+                    key={item.id}
+                    announcement={item}
+                    isAdmin={false}
+                  ></AuctionCard>
+                );
               }
             })}
         </ProductList>
@@ -69,7 +73,13 @@ const Home = () => {
           {!!homeData &&
             homeData.map((item: IAnnouncement) => {
               if (item.announceType === "sale" && item.category === "car") {
-                return <Card key={item.id} announcement={item} isAdmin={false}></Card>;
+                return (
+                  <Card
+                    key={item.id}
+                    announcement={item}
+                    isAdmin={false}
+                  ></Card>
+                );
               }
             })}
         </ProductList>
@@ -80,7 +90,13 @@ const Home = () => {
                 item.announceType === "sale" &&
                 item.category === "motorcycle"
               ) {
-                return <Card key={item.id} announcement={item} isAdmin={false}></Card>;
+                return (
+                  <Card
+                    key={item.id}
+                    announcement={item}
+                    isAdmin={false}
+                  ></Card>
+                );
               }
             })}
         </ProductList>
