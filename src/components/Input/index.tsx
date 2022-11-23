@@ -27,7 +27,7 @@ const Input = ({
   maskFunction,
   ...rest
 }: IInputProps): JSX.Element => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<string>();
 
   return (
     <InputContainer width={width} height={height}>

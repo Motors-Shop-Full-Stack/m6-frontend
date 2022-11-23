@@ -47,7 +47,7 @@ const CreateAnnouncementForm = ({handleSubmit, register, errors}: any) => {
               fontC={"--grey4"}
               width={"15px"}
               height={"15px"}
-              onClick={() => handleFirstModal()}
+              onClick={() => handleFirstModal("createAnnouncement")}
             >
               x
             </Button>
@@ -219,7 +219,7 @@ const CreateAnnouncementForm = ({handleSubmit, register, errors}: any) => {
               type={"button"}
               value={"sale"}
               name={"sale"}
-              onClick={() => handleFirstModal()}
+              onClick={() => handleFirstModal("createAnnouncement")}
               borderC={"--brand1"}
               backgroundC={"--brand1"}
               fontC={"--grey10"}

@@ -5,10 +5,11 @@ import { createContext, useContext, useState } from "react";
 export interface IModal {
   setFirstModal: React.Dispatch<React.SetStateAction<boolean>>;
   setSecondModal: React.Dispatch<React.SetStateAction<boolean>>;
-  handleFirstModal: () => void;
+  handleFirstModal: (prop: string) => void;
   handleSecondModal: () => void;
   firstModal: boolean;
   secondModal: boolean;
+  selectedModal: string
 }
 
 const ModalContext = createContext<IModal>({} as IModal);
@@ -16,9 +17,11 @@ const ModalContext = createContext<IModal>({} as IModal);
 export const ModalProvider = ({ children }: IProviders) => {
   const [firstModal, setFirstModal] = useState<boolean>(false);
   const [secondModal, setSecondModal] = useState<boolean>(false);
+  const [selectedModal, setSelectedModal] = useState<string>("")
 
-  const handleFirstModal = () => {
+  const handleFirstModal = (prop: string) => {
     setFirstModal(!firstModal);
+    setSelectedModal(prop)
   };
 
   const handleSecondModal = () => {
@@ -34,6 +37,7 @@ export const ModalProvider = ({ children }: IProviders) => {
         setSecondModal,
         firstModal,
         secondModal,
+        selectedModal
       }}
     >
       {children}

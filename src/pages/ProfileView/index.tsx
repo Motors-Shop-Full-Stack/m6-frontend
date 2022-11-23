@@ -15,14 +15,14 @@ import { useApi } from "../../providers/api";
 import { useEffect } from "react";
 
 const ProfileView = () => {
-  const { handleFirstModal } = useModal();
+  const { handleFirstModal, selectedModal } = useModal();
   const params: { id: string } = useParams()
-  const {user, fetchUser} = useApi()
-  
-  useEffect(()=>{
+  const { user, fetchUser } = useApi()
+
+  useEffect(() => {
     fetchUser()
   }, [])
-  
+
   const id = localStorage.getItem("motorshop-id")
   const isAdmin = params.id === id
   const isSeller = user && user.accountType === "seller"
@@ -30,9 +30,10 @@ const ProfileView = () => {
 
   return (
     <>
-      <Modal name="first" pTop="4%" pLeft="0%">
+
+      {selectedModal === "createAnnouncement" ? (<Modal name="first" pTop="4%" pLeft="0%">
         <Form name="createad" />
-      </Modal>
+      </Modal>) : (null)}
       <Header></Header>
       <GradientContainer>
         <UserBox>
@@ -55,7 +56,7 @@ const ProfileView = () => {
               fontC="--brand1"
               width="140px"
               height="50px"
-              onClick={() => handleFirstModal()}
+              onClick={() => handleFirstModal("createAnnouncement")}
             >
               Criar anuncio
             </Button>
