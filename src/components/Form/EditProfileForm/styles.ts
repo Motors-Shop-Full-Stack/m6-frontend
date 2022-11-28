@@ -5,6 +5,8 @@ export const Container = styled.form`
   flex-direction: column;
   padding: 16px 24px;
   width: 300px;
+  max-height: 70vh;
+  overflow-y: scroll;
 
   @media (min-width: 768px) {
     width: 520px;
