@@ -20,16 +20,29 @@ import { useParams } from "react-router-dom";
 import { formatName, getInitials } from "../../utils/stringFormaters";
 import { useHistory } from "react-router-dom";
 import CommentCard from "../../components/CommentCard";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 const Product = () => {
-  const colors = useRef(['pink', 'purple', 'green'])
+  const colors = useRef([
+    "var(--random1)",
+    "var(--random2)",
+    "var(--random3)",
+    "var(--random4)",
+    "var(--random5)",
+    "var(--random6)",
+    "var(--random7)",
+    "var(--random8)",
+    "var(--random9)",
+    "var(--random10)",
+    "var(--random11)",
+    "var(--random12)"
+  ]);
 
-  const params: {id: string} = useParams()
-  const history = useHistory()
+  const params: { id: string } = useParams();
+  const history = useHistory();
 
   const { data } = useFetch(`http://localhost:3000/announcements/${params.id}`);
-  
+
   return (
     <div>
       <Header />
@@ -52,13 +65,11 @@ const Product = () => {
             </InfoContainer>
             <DescriptionContainer>
               <h2>Descrição</h2>
-              <p>
-                {data && data.description}
-              </p>
+              <p>{data && data.description}</p>
             </DescriptionContainer>
             <CommentsContainer>
               <h2>Comentários</h2>
-              <CommentCard colors={colors}/>
+              <CommentCard colors={colors} />
             </CommentsContainer>
           </LeftColumn>
           <RightColumn>
@@ -76,10 +87,10 @@ const Product = () => {
             <AdvertiserContainer>
               <UserIcon>{data && getInitials(data.user.name)}</UserIcon>
               <h3>{data && formatName(data.user.name)}</h3>
-              <p>
-              {data && data.user.description}
-              </p>
-              <button onClick={() => history.push(`/profile/${data.user.id}`)}>Ver todos os anuncios</button>
+              <p>{data && data.user.description}</p>
+              <button onClick={() => history.push(`/profile/${data.user.id}`)}>
+                Ver todos os anuncios
+              </button>
             </AdvertiserContainer>
           </RightColumn>
         </div>

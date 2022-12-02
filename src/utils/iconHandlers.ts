@@ -19,10 +19,5 @@ function shuffle(array: any[]) {
 export const handleBackgroundColor = (colors: React.MutableRefObject<string[]>) => {
     const shuffled = shuffle(colors.current)
     const randomColor = shuffled[0]
-    const filteredColors = colors.current.filter(item => {
-      return item !== randomColor
-    })
-    colors.current = filteredColors
-    console.log(colors.current)
     return randomColor
 }
