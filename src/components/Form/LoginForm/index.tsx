@@ -1,9 +1,8 @@
-import { useState } from "react";
 import { useApi } from "../../../providers/api";
+import { useHistory } from "react-router-dom";
+import { DetailsBoxOne, DetailsBoxTwo, StyledForm, TitleForm } from "./styles";
 import Button from "../../Button";
 import Input from "../../Input";
-import { DetailsBoxOne, DetailsBoxTwo, StyledForm, TitleForm } from "./styles";
-import { useHistory } from "react-router-dom";
 
 const LoginForm = ({ handleSubmit, register, errors }: any) => {
   const history = useHistory();
@@ -63,6 +62,7 @@ const LoginForm = ({ handleSubmit, register, errors }: any) => {
         fontC={"--whiteFixed"}
         width={"65%"}
         height={"35px"}
+        type={"submit"}
       >
         Enviar
       </Button>
@@ -77,7 +77,8 @@ const LoginForm = ({ handleSubmit, register, errors }: any) => {
         fontC={"--grey0"}
         width={"65%"}
         height={"35px"}
-        type={"submit"}
+        type={"button"}
+        onClick={() => history.push("/register")}
       >
         Cadastrar
       </Button>

@@ -4,6 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import {
   AdvertiserContainer,
   BuyButton,
+  CommentsContainer,
   DescriptionContainer,
   GalleryContainer,
   InfoContainer,
@@ -18,8 +19,12 @@ import Carro from "./test.png";
 import { useParams } from "react-router-dom";
 import { formatName, getInitials } from "../../utils/stringFormaters";
 import { useHistory } from "react-router-dom";
+import CommentCard from "../../components/CommentCard";
+import { useRef, useState } from "react";
 
 const Product = () => {
+  const colors = useRef(['pink', 'purple', 'green'])
+
   const params: {id: string} = useParams()
   const history = useHistory()
 
@@ -51,7 +56,10 @@ const Product = () => {
                 {data && data.description}
               </p>
             </DescriptionContainer>
-            <div></div>
+            <CommentsContainer>
+              <h2>Comentários</h2>
+              <CommentCard colors={colors}/>
+            </CommentsContainer>
           </LeftColumn>
           <RightColumn>
             <GalleryContainer>

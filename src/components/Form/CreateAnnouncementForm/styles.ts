@@ -9,6 +9,7 @@ export const FormAd = styled.form`
   border-radius: 4px;
   width: 295px;
   height: 620px;
+  padding: 20px 15px;
   @media (min-width: 425px) {
     height: 560px;
     width: 370px;
@@ -137,4 +138,11 @@ export const FormAdInputManyBoxTwo = styled.div`
       margin-left: 10px;
     }
   }
+`;
+
+export const ButtonBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  gap: 10px;
 `;

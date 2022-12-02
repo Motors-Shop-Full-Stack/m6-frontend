@@ -13,6 +13,7 @@ import { IAnnouncement } from "../Home/interfaces";
 import Card from "../../components/Card";
 import { useApi } from "../../providers/api";
 import { useEffect } from "react";
+import Footer from "../../components/Footer";
 
 const ProfileView = () => {
   const { handleFirstModal, selectedModal } = useModal();
@@ -82,6 +83,7 @@ const ProfileView = () => {
             })}
         </ProductList>
       </ListsWrapper>
+      <Footer />
       <Toaster />
     </>
   );

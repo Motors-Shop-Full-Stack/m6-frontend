@@ -27,3 +27,12 @@ export function cepMask(e: any) {
   let value3 = value2.replace(/(-\d{3})\d+?$/, "$1");
   return value3;
 }
+
+export function currencyMask(e: any) {
+  let formatCurrency = new Intl.NumberFormat(undefined, {
+    style: 'currency',
+    currency: 'USD'
+  });
+
+
+}

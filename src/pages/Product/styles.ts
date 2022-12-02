@@ -107,6 +107,25 @@ export const DescriptionContainer = styled.div`
   }
 `;
 
+export const CommentsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: var(--whiteFixed);
+  padding: 32px;
+  border-radius: 4px;
+
+  h2 {
+    font-family: var(--lexend);
+    margin-bottom: 45px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-family: var(--inter);
+    line-height: 28px;
+  }
+`;
+
 export const RightColumn = styled.div`
   display: flex;
   flex-direction: column;

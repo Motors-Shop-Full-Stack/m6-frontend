@@ -3,7 +3,8 @@ import { useApi } from "../../../providers/api";
 import { useModal } from "../../../providers/modal";
 import Button from "../../Button";
 import Input from "../../Input";
-import { FormAd, FormAdInputManyBoxOne, FormAdInputManyBoxTwo, FormAdInputManyContainer, FormAdInputOneContainer, FormAdSubTitle, FormAdTitle, FormAdTypeContainer } from "./styles";
+import { currencyMask } from "../inputMasks";
+import { ButtonBox, FormAd, FormAdInputManyBoxOne, FormAdInputManyBoxTwo, FormAdInputManyContainer, FormAdInputOneContainer, FormAdSubTitle, FormAdTitle, FormAdTypeContainer } from "./styles";
 
 const CreateAnnouncementForm = ({handleSubmit, register, errors}: any) => {
 
@@ -132,6 +133,7 @@ const CreateAnnouncementForm = ({handleSubmit, register, errors}: any) => {
                   errors={errors?.price}
                   width={"45%"}
                   height={"49px"}
+                  maskFunction={currencyMask}
                 />
               ) : (
                 <Input
@@ -143,6 +145,7 @@ const CreateAnnouncementForm = ({handleSubmit, register, errors}: any) => {
                   errors={errors?.price}
                   width={"45%"}
                   height={"45px"}
+                  maskFunction={currencyMask}
                 />
               )}
             </FormAdInputManyBoxTwo>
@@ -215,31 +218,29 @@ const CreateAnnouncementForm = ({handleSubmit, register, errors}: any) => {
             />
           </FormAdInputOneContainer>
           <FormAdTypeContainer>
-            <Button
-              type={"button"}
-              value={"sale"}
-              name={"sale"}
-              onClick={() => handleFirstModal("createAnnouncement")}
-              borderC={"--brand1"}
-              backgroundC={"--brand1"}
-              fontC={"--grey10"}
-              width={"47%"}
-              height={"30px"}
-            >
-              Cancelar
-            </Button>
-            <Button
-              type={"submit"}
-              value={"auction"}
-              name={"sale"}
-              borderC={"--brand1"}
-              backgroundC={"--brand1"}
-              fontC={"--grey10"}
-              width={"47%"}
-              height={"30px"}
-            >
-              Criar anúncio
-            </Button>
+          <ButtonBox>
+                    <Button
+                        borderC="--grey6"
+                        backgroundC="--grey6"
+                        fontC="--grey2"
+                        width="126px"
+                        height="48px"
+                        onClick={() => handleFirstModal("editProfile")}
+                        type="button"
+                    >
+                        Cancelar
+                    </Button>
+                    <Button
+                        borderC="--brand1"
+                        backgroundC="--brand1"
+                        fontC="--whiteFixed"
+                        width="193px"
+                        height="48px"
+                        type="submit"
+                    >
+                        Salvar alterações
+                    </Button>
+                </ButtonBox>
           </FormAdTypeContainer>
         </FormAd>
       );

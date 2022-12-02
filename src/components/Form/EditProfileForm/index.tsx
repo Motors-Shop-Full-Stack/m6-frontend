@@ -2,7 +2,7 @@ import { useApi } from "../../../providers/api";
 import { useModal } from "../../../providers/modal";
 import Button from "../../Button";
 import Input from "../../Input";
-import { cellMask, cpfMask } from "../RegistrationForm/inputMasks";
+import { cellMask, cpfMask } from "../inputMasks";
 import { ButtonBox, Container, FormPersonalInfo, FormRegisterSubTitle } from "./styles";
 
 const EditProfileForm = ({ handleSubmit, errors, register }: any) => {

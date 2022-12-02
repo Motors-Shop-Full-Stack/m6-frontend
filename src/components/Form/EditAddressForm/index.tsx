@@ -2,7 +2,7 @@ import { useApi } from "../../../providers/api";
 import { useModal } from "../../../providers/modal";
 import Button from "../../Button";
 import Input from "../../Input";
-import { cepMask } from "../RegistrationForm/inputMasks";
+import { cepMask } from "../inputMasks";
 import { FormRegisterSelectBox } from "../RegistrationForm/styles";
 import { ButtonBox, FormRegisterAddresInfo, FormRegisterAddressBox, FormRegisterSubTitle } from "./styles";
 

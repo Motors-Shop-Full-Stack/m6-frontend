@@ -13,7 +13,7 @@ import {
 } from "./styles";
 import Button from "../../Button";
 import Input from "../../Input";
-import { cellMask, cepMask, cpfMask } from "./inputMasks";
+import { cellMask, cepMask, cpfMask } from "../inputMasks";
 import { format } from "date-fns";
 import { parseISO } from "date-fns/esm";
 import { useHistory } from "react-router-dom";
