@@ -100,7 +100,6 @@ export const ApiProvider = ({ children }: IApiProvider) => {
     await axios
       .post("http://localhost:3000/users/", data)
       .then((res) => {
-        console.log(res.data);
         toast.success("OK");
         setIsSIgn(!false);
       })

@@ -34,24 +34,24 @@ const Input = ({
   return (
     <InputContainer width={width} height={height}>
       <StyledLabel>{description}</StyledLabel>
-      {errors ? <StyledSpan>{errors?.message}</StyledSpan> : null}
       {maskFunction ? (
         <StyledInput
+        type={type}
+        placeholder={placeholder}
+        {...register(name)}
+        {...rest}
+        value={value}
+        onChange={(e) => setValue(maskFunction(e))}
+        />
+        ) : (
+          <StyledInput
           type={type}
           placeholder={placeholder}
           {...register(name)}
           {...rest}
-          value={value}
-          onChange={(e) => setValue(maskFunction(e))}
-        />
-      ) : (
-        <StyledInput
-          type={type}
-          placeholder={placeholder}
-          {...register(name)}
-          {...rest}
-        />
-      )}
+          />
+          )}
+      {errors ? <StyledSpan>{errors?.message}</StyledSpan> : null}
       {children}
     </InputContainer>
   );

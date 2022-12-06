@@ -7,20 +7,20 @@ export const FormRegister = styled.form`
   align-items: center;
   background-color: var(--grey10);
   border-radius: 4px;
-  width: 295px;
-  height: 1140px;
-  margin: 105px 0px 35px 0px;
+  padding: 25px;
+  margin: 100px 0px;
+  max-width: 300px;
+  gap: 10px;
   @media (min-width: 425px) {
-    height: 1140px;
     width: 370px;
+    max-width: none;
   }
 `;
 
 export const FormRegisterTitle = styled.div`
   display: flex;
-  width: 94%;
-  height: 20px;
-  margin-top: 15px;
+  text-align: left;
+  width: 100%;
   h2 {
     font-family: var(--lexend);
     font-size: 19px;
@@ -28,7 +28,6 @@ export const FormRegisterTitle = styled.div`
     font-size: 24px;
     font-weight: 500;
     line-height: 30px;
-    letter-spacing: 0em;
     text-align: left;
   }
 `;
@@ -38,8 +37,6 @@ export const FormRegisterSubTitle = styled.div`
   width: 100%;
   height: 20px;
   margin-bottom: 5px;
-  margin: 0px 0px 7px 0px;
-  margin: 15px;
   h4 {
     font-family: var(--inter);
     font-size: 14px;
@@ -55,10 +52,9 @@ export const FormRegisterPersonalInfo = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 94%;
-  height: 460px;
-  margin: 15px 0px 0px 0px;
   font-family: "Inter";
+  width: 100%;
+  gap: 10px;
   label {
     font-size: 14px;
     font-weight: 500;
@@ -80,10 +76,8 @@ export const FormRegisterAddresInfo = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 94%;
-  height: 310px;
-  margin: 15px 0px 0px 0px;
   font-family: var(--inter);
+  gap: 10px;
   label {
     font-size: 14px;
     font-weight: 500;
@@ -104,7 +98,6 @@ export const FormRegisterAddressBox = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 60px;
 `;
 
 export const FormRegisterAddressAccount = styled.section`
@@ -112,10 +105,9 @@ export const FormRegisterAddressAccount = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 94%;
-  height: 315px;
-  margin: 15px 0px 0px 0px;
+  width: 100%;
   font-family: var(--inter);
+  gap: 10px;
   label {
     font-size: 14px;
     font-weight: 500;
@@ -145,8 +137,7 @@ export const FormRegisterAccountBox = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 40px;
-  margin: 5px 0px 0px 0px;
+  padding: 10px 0px;
   button {
     font-size: 12px;
   }
@@ -157,21 +148,25 @@ export const FormRegisterSelectBox = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 48%;
-  height: 60px;
+  height: 100%;
   label {
     color: var(--grey1);
     font-weight: 500;
-    font-size: 12px;
-    margin-top: -5px;
+    font-size: 14px;
+    margin-bottom: 5px;
   }
   select {
-    height: 29px;
-    margin: 6px 0px 3px 0px;
+    height: 100%;
+    padding: 10px;
     background-color: var(--grey10);
     border: 1px solid var(--grey8);
     color: var(--grey3);
     border-radius: 4px;
     font-size: 12px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
     &::-webkit-scrollbar {
       width: 5px;
     }

@@ -20,7 +20,6 @@ export const InputContainer = styled.div<Props>`
   align-items: flex-start;
   width: ${(props) => handleWidth(props)};
   height: ${(props) => handleHeight(props)};
-  /* border: 1px solid #000; */
   margin-bottom: 12px;
   input {
     border: 1px solid var(--grey8);
@@ -35,16 +34,19 @@ export const InputContainer = styled.div<Props>`
 
 export const StyledInput = styled.input`
   display: flex;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
 `;
 
 export const StyledLabel = styled.label`
   color: var(--grey1);
-  padding-bottom: 3.5px;
+  margin-bottom: 5px;
   font-weight: 500;
 `;
 
 export const StyledSpan = styled.span`
   font-size: 11px;
-  text-decoration: underline;
   color: var(--alert1);
 `;

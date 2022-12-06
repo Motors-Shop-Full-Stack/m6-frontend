@@ -7,9 +7,13 @@ export const StyledForm = styled.form`
   justify-content: center;
   background-color: var(--grey10);
   border-radius: 4px;
-  width: 235px;
-  height: 310px;
-  margin: 25px 0px 0px 0px;
+  padding: 25px;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  @media (min-width: 500px){
+    max-width: 380px;
+  }
   label {
     font-family: var(--inter);
     font-size: 14px;
@@ -24,24 +28,19 @@ export const StyledForm = styled.form`
     font-weight: 400;
     letter-spacing: 0em;
     text-align: left;
-    padding: 10px;
-    margin-top: 5px;
+    padding: 15px 10px;
   }
   button {
-    margin: 10px 0px 10px 0px;
     font-size: 14px;
   }
-  @media (min-width: 1024px) {
-    width: 335px;
-    height: 380px;
-  }
+
 `;
 
 export const TitleForm = styled.div`
   display: flex;
-  width: 80%;
-  height: 20px;
-  margin: 12px 0px 22px 0px;
+  text-align: left;
+  width: 100%;
+  margin: 15px;
   h2 {
     color: var(--grey0);
     font-family: var(--lexend);
@@ -53,8 +52,7 @@ export const TitleForm = styled.div`
 export const DetailsBoxOne = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 80%;
-  height: 20px;
+  width: 100%;
   font-size: 10px;
   font-weight: 500;
   color: var(--grey2);
@@ -64,8 +62,6 @@ export const DetailsBoxOne = styled.div`
 export const DetailsBoxTwo = styled.div`
   display: flex;
   justify-content: center;
-  width: 80%;
-  height: 20px;
   color: var(--grey2);
   font-family: var(--inter);
   font-size: 10px;

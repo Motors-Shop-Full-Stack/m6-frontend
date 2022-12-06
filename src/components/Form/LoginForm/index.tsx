@@ -37,8 +37,8 @@ const LoginForm = ({ handleSubmit, register, errors }: any) => {
         name={"email"}
         register={register}
         errors={errors?.name}
-        width={"80%"}
-        height={"60px"}
+        width={"100%"}
+        height={"100%"}
       />
 
       <Input
@@ -48,8 +48,8 @@ const LoginForm = ({ handleSubmit, register, errors }: any) => {
         name={"password"}
         register={register}
         errors={errors?.password}
-        width={"80%"}
-        height={"60px"}
+        width={"100%"}
+        height={"100%"}
       />
 
       <DetailsBoxOne>
@@ -60,7 +60,7 @@ const LoginForm = ({ handleSubmit, register, errors }: any) => {
         borderC={"--sucess3"}
         backgroundC={"--brand1"}
         fontC={"--whiteFixed"}
-        width={"65%"}
+        width={"100%"}
         height={"35px"}
         type={"submit"}
       >
@@ -75,7 +75,7 @@ const LoginForm = ({ handleSubmit, register, errors }: any) => {
         borderC={"--grey4"}
         backgroundC={"--grey10"}
         fontC={"--grey0"}
-        width={"65%"}
+        width={"100%"}
         height={"35px"}
         type={"button"}
         onClick={() => history.push("/register")}

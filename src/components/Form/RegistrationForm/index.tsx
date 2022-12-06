@@ -73,7 +73,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
           register={register}
           errors={errors?.name}
           width={"100%"}
-          height={"60px"}
+          height={"100%"}
         />
         <Input
           type={"email"}
@@ -83,7 +83,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
           register={register}
           errors={errors?.email}
           width={"100%"}
-          height={"60px"}
+          height={"100%"}
         />
         <Input
           type={"text"}
@@ -93,7 +93,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
           register={register}
           errors={errors?.cpf}
           width={"100%"}
-          height={"60px"}
+          height={"100%"}
           maskFunction={cpfMask}
         />
         <Input
@@ -104,7 +104,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
           register={register}
           errors={errors?.cel}
           width={"100%"}
-          height={"60px"}
+          height={"100%"}
           maskFunction={cellMask}
         />
         <Input
@@ -115,7 +115,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
           register={register}
           errors={errors?.birthdate}
           width={"100%"}
-          height={"60px"}
+          height={"100%"}
         />
         <Input
           type={"text"}
@@ -125,7 +125,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
           register={register}
           errors={errors?.description}
           width={"100%"}
-          height={"60px"}
+          height={"100%"}
         />
       </FormRegisterPersonalInfo>
       <FormRegisterAddresInfo>
@@ -140,7 +140,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
           register={register}
           errors={errors?.cep}
           width={"100%"}
-          height={"60px"}
+          height={"100%"}
           maskFunction={cepMask}
         />
         <FormRegisterAddressBox>
@@ -185,7 +185,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
             register={register}
             errors={errors.city}
             width={"48%"}
-            height={"60px"}
+            height={"100%"}
           />
         </FormRegisterAddressBox>
         <Input
@@ -196,7 +196,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
           register={register}
           errors={errors?.street}
           width={"100%"}
-          height={"60px"}
+          height={"100%"}
         />
         <FormRegisterAddressBox>
           <Input
@@ -207,7 +207,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
             register={register}
             errors={errors?.number}
             width={"48%"}
-            height={"60px"}
+            height={"100%"}
           />
           <Input
             type={"text"}
@@ -217,7 +217,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
             register={register}
             errors={errors?.complement}
             width={"48%"}
-            height={"60px"}
+            height={"100%"}
           />
         </FormRegisterAddressBox>
       </FormRegisterAddresInfo>
@@ -261,7 +261,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
           register={register}
           errors={errors?.password}
           width={"100%"}
-          height={"60px"}
+          height={"100%"}
         />
         <Input
           type={"password"}
@@ -271,7 +271,7 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
           register={register}
           errors={errors?.confirmpassword}
           width={"100%"}
-          height={"60px"}
+          height={"100%"}
         />
         <Button
           type={"submit"}

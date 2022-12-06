@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Props {
+  disabled?: boolean
+}
+
 export const MainContainer = styled.div`
   display: flex;
   width: 100%;
@@ -194,7 +198,7 @@ export const ShortcutButton = styled.button`
   color: var(--grey3);
 `;
 
-export const CommentButton = styled.button`
+export const CommentButton = styled.button<Props>`
   position: absolute;
   bottom: 50px;
   right: 15px;
@@ -206,8 +210,8 @@ export const CommentButton = styled.button`
   gap: 10px;
   width: 108px;
   height: 38px;
-  background: var(--brand1);
-  border: 1.5px solid #4529e6;
+  background: ${props => props.disabled ? "var(--grey5)" : "var(--brand1)"};
+  border: ${props => props.disabled ? "1.5px solid var(--grey5)" : "1.5px solid var(--brand1)"};
   border-radius: 4px;
   font-family: "Inter";
   font-style: normal;
@@ -215,6 +219,7 @@ export const CommentButton = styled.button`
   font-size: 14px;
   line-height: 0px;
   color: #ffffff;
+  cursor: ${props => props.disabled ? "default" : "pointer"}; ;
 `;
 
 export const RightColumn = styled.div`

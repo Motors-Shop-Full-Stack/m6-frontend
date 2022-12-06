@@ -13,7 +13,8 @@ export const registerSchema = yup.object().shape({
     name: yup
         .string()
         .required("Campo obrigatório")
-        .max(50, "Máximo 50 caracteres"),
+        .max(50, "Máximo 50 caracteres")
+        .matches(/^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/, "Deve ser preenchido nome completo sem números."),
     email: yup.string().email().required("Campo obrigatório"),
     password: yup
         .string()
@@ -24,7 +25,7 @@ export const registerSchema = yup.object().shape({
     // ),
     confirmpassword: yup
         .string()
-        .required("Required field!")
+        .required("Campo obrigatório")
         .oneOf([yup.ref("password")], "Password does not match!"),
     cpf: yup
         .string()
