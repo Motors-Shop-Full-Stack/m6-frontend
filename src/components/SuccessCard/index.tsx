@@ -19,7 +19,7 @@ const SuccessCard = ({ type }: any) => {
                         <button onClick={() => handleFirstModal("announcementSuccess", false)}>X</button>
                     </CardHead>
                     <CardBody>
-                        <h5>Seu anúncio foi criado com sucesso</h5>
+                        <h5>Seu anúncio foi criado com sucesso!</h5>
                         <p>Agora você poderá ver seus negócios crescendo em grande escala</p>
                     </CardBody>
                 </Container>
@@ -30,7 +30,7 @@ const SuccessCard = ({ type }: any) => {
                         <button onClick={() => handleFirstModal("registrationSuccess", false)}>X</button>
                     </CardHead>
                     <CardBody>
-                        <h5>Seu anúncio foi criado com sucesso</h5>
+                        <h5>Sua conta foi criada com sucesso!</h5>
                         <p>Agora você poderá ver seus negócios crescendo em grande escala</p>
                     </CardBody>
                     <Button

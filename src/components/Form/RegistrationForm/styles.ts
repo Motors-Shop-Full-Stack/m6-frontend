@@ -54,7 +54,7 @@ export const FormRegisterPersonalInfo = styled.section`
   justify-content: flex-start;
   font-family: "Inter";
   width: 100%;
-  gap: 10px;
+  gap: 20px;
   label {
     font-size: 14px;
     font-weight: 500;
@@ -77,7 +77,7 @@ export const FormRegisterAddresInfo = styled.section`
   align-items: center;
   justify-content: flex-start;
   font-family: var(--inter);
-  gap: 10px;
+  gap: 20px;
   label {
     font-size: 14px;
     font-weight: 500;

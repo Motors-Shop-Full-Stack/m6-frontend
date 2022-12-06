@@ -20,7 +20,7 @@ export const InputContainer = styled.div<Props>`
   align-items: flex-start;
   width: ${(props) => handleWidth(props)};
   height: ${(props) => handleHeight(props)};
-  margin-bottom: 12px;
+  
   input {
     border: 1px solid var(--grey8);
     border-radius: 4px;
