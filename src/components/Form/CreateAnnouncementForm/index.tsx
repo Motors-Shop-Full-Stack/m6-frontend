@@ -29,7 +29,7 @@ const CreateAnnouncementForm = ({handleSubmit, register, errors}: any) => {
           title: data.title,
           fabricationYear: parseInt(data.year),
           km: parseInt(data.km),
-          price: data.price,
+          price: parseFloat(data.price),
           description: data.description,
           category: announceCategory,
           announceCover: data.announceCover,

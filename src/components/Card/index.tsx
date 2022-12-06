@@ -44,7 +44,7 @@ const Card = ({ announcement, isAdmin }: ICardProps) => {
           <InfoDetail>{announcement.fabricationYear.toString()}</InfoDetail>
         </div>
         <div>
-          <h5>R$ {announcement.price}</h5>
+        <h5>R$ {announcement.price.toString().replace(".", ",")}</h5>
         </div>
       </InfoBox>
       {isAdmin ? (

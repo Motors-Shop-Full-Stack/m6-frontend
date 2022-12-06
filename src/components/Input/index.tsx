@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { UseFormRegister, FieldError } from "react-hook-form";
 import { IUseFormProps } from "../Form/interfaces";
 import { InputContainer, StyledInput, StyledLabel, StyledSpan } from "./styles";
 
 export interface IInputProps {
-  type: string;
-  description: string | number;
-  placeholder: string;
+  type?: string;
+  description?: string | number;
+  placeholder?: string;
   register: UseFormRegister<IUseFormProps>;
-  errors: FieldError | undefined;
+  errors?: FieldError | undefined;
   name: string | any;
   width: string;
   height: string;
   maskFunction?: any;
+  children?: ReactNode
 }
 
 const Input = ({
@@ -25,9 +26,10 @@ const Input = ({
   width,
   height,
   maskFunction,
+  children,
   ...rest
 }: IInputProps): JSX.Element => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>("");
 
   return (
     <InputContainer width={width} height={height}>
@@ -50,6 +52,7 @@ const Input = ({
           {...rest}
         />
       )}
+      {children}
     </InputContainer>
   );
 };

@@ -18,11 +18,12 @@ import { useHistory } from "react-router-dom";
 const ApiContext = createContext<IApi>({} as IApi);
 
 export const ApiProvider = ({ children }: IApiProvider) => {
-  const history = useHistory();
 
   const [homeData, setHomeData] = useState<IAnnouncement[]>(
     [] as IAnnouncement[]
   );
+
+  const [announcement, setAnnouncement] = useState<IAnnouncement | undefined>()
 
   const [user, setUser] = useState<IUser>();
 
@@ -34,6 +35,17 @@ export const ApiProvider = ({ children }: IApiProvider) => {
         "http://localhost:3000/announcements/"
       );
       setHomeData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchAnnouncement = async (id: string) => {
+    try {
+      const response = await axiosInstance.get(
+        `http://localhost:3000/announcements/${id}`
+      );
+      setAnnouncement(response.data)
     } catch (error) {
       console.log(error);
     }
@@ -98,6 +110,19 @@ export const ApiProvider = ({ children }: IApiProvider) => {
       });
   };
 
+  const handleCommentPost = async (data: any, id: string) => {
+    await axiosInstance
+      .post(`http://localhost:3000/comments/${id}`, data)
+      .then((res) => {
+        toast.success("OK");
+        fetchAnnouncement(id)
+      })
+      .catch((error) => {
+        toast.error("ERROR");
+        console.log(error);
+      });
+  };
+
   const handleEditProfile = async (data: any) => {
     
     Object.keys(data).forEach(key => {
@@ -144,7 +169,10 @@ export const ApiProvider = ({ children }: IApiProvider) => {
         setUser,
         fetchUser,
         isSign,
-        handleEditProfile
+        handleEditProfile,
+        fetchAnnouncement,
+        announcement,
+        handleCommentPost
       }}
     >
       {children}

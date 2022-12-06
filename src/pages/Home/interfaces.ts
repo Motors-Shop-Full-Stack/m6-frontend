@@ -11,7 +11,7 @@ export interface IAnnouncement {
   description: string;
   is_active: boolean;
   km: number;
-  price: string;
+  price: number;
   title: string;
   fabricationYear: number;
 }

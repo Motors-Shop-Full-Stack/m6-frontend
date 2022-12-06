@@ -34,7 +34,7 @@ const AuctionCard = ({ announcement }: ICardProps) => {
               <DetailBox>{announcement.km}KM</DetailBox>
             </div>
             <div className="info-price">
-              <h5>R$ {announcement.price}</h5>
+              <h5>R$ {announcement.price.toString().replace(".", ",")}</h5>
             </div>
           </div>
         </div>

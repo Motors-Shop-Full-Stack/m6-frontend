@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MainContainer = styled.div`
   display: flex;
   width: 100%;
-  background: linear-gradient(to bottom, var(--brand1) 60%, var(--grey6) 0%);
+  background: linear-gradient(to bottom, var(--brand1) 70vh, var(--grey6) 0%);
   justify-content: center;
   padding: 132px 32px 32px 32px;
 
@@ -12,7 +12,7 @@ export const MainContainer = styled.div`
     flex-direction: column;
     gap: 40px;
     max-width: 1200px;
-    @media (min-width: 900px){
+    @media (min-width: 900px) {
       flex-direction: row;
     }
   }
@@ -22,9 +22,9 @@ export const LeftColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  @media (min-width: 900px){
-      min-width: 55%;
-    }
+  @media (min-width: 900px) {
+    min-width: 55%;
+  }
 `;
 
 export const PhotoContainer = styled.div`
@@ -34,7 +34,7 @@ export const PhotoContainer = styled.div`
   align-items: center;
   border-radius: 4px;
   padding: 45px 0;
-  img{
+  img {
     width: 100%;
     max-width: 400px;
     object-fit: cover;
@@ -126,6 +126,97 @@ export const CommentsContainer = styled.div`
   }
 `;
 
+export const CommentingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 32px;
+  border-radius: 4px;
+  background-color: var(--whiteFixed);
+  width: 100%;
+`;
+
+export const CommentInfo = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  font-family: "Inter";
+  font-style: normal;
+  line-height: 24px;
+
+  h5 {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--grey1);
+  }
+`;
+
+export const StyledForm = styled.form`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .button-wrapper{
+    display: flex;
+    gap: 8px;
+  }
+`;
+
+export const StyledInput = styled.input`
+  border: 1px solid var(--grey8);
+  border-radius: 4px;
+  width: 100%;
+  height: 55%;
+  color: var(--grey3);
+  padding-left: 4px;
+  font-size: 16px;
+  height: 128px;
+  width: 100%;
+`;
+
+export const ShortcutButton = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 12px;
+  height: 24px;
+  background: var(--grey7);
+  border-radius: 24px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  color: var(--grey3);
+`;
+
+export const CommentButton = styled.button`
+  position: absolute;
+  bottom: 50px;
+  right: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 10px;
+  width: 108px;
+  height: 38px;
+  background: var(--brand1);
+  border: 1.5px solid #4529e6;
+  border-radius: 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 0px;
+  color: #ffffff;
+`;
+
 export const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -145,9 +236,9 @@ export const GalleryContainer = styled.div`
   gap: 32px;
   width: 100%;
 
-  @media (min-width: 500px){
+  @media (min-width: 500px) {
     padding: 36px 44px;
-    }
+  }
 
   h2 {
     font-family: var(--lexend);
@@ -165,20 +256,6 @@ export const GalleryContainer = styled.div`
     background-color: var(--grey7);
     padding: 18px 3px;
   }
-`;
-
-export const UserIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  width: 100px;
-  height: 100px;
-  background: #5126ea;
-  border-radius: 150%;
-  margin: 0 15px 0 15px;
-  font-family: var(--inter);
-  font-size: 36px;
 `;
 
 export const AdvertiserContainer = styled.div`

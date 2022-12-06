@@ -26,7 +26,7 @@ export interface IAnnouncementRequest {
   title: string;
   fabricationYear: number;
   km: number;
-  price: string;
+  price: number;
   description: string;
   category: string | undefined;
   announceCover: string;
@@ -36,6 +36,8 @@ export interface IAnnouncement extends IAnnouncementRequest {
   id: string;
   is_active: boolean;
   category: string;
+  user: any
+  comments: IComment[]
 }
 
 export interface ILoginData {
@@ -67,6 +69,11 @@ export interface IUser {
   announcements: IAnnouncement[];
 }
 
+export interface IComment {
+  id: string
+  message: string
+}
+
 export interface IApi {
   homeData: IAnnouncement[];
   isSign: boolean;
@@ -78,4 +85,7 @@ export interface IApi {
   setUser: React.Dispatch<React.SetStateAction<IUser | undefined>>;
   fetchUser: () => Promise<void>;
   handleEditProfile: (data: any) => Promise<void>
+  fetchAnnouncement: (id: string) => any
+  announcement: IAnnouncement | undefined
+  handleCommentPost: any
 }
