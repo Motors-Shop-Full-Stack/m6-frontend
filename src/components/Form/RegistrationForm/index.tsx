@@ -19,6 +19,7 @@ import { parseISO } from "date-fns/esm";
 import { useHistory } from "react-router-dom";
 
 const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
+
   const { handleRegisterRequest, isSign } = useApi();
   const history = useHistory();
 
@@ -51,9 +52,6 @@ const RegistrationForm = ({ handleSubmit, register, errors }: any) => {
 
     await handleRegisterRequest(requestObj);
 
-    if (!!isSign) {
-      history.push("/login");
-    }
   };
 
   return (

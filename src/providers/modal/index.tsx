@@ -5,7 +5,7 @@ import { createContext, useContext, useState } from "react";
 export interface IModal {
   setFirstModal: React.Dispatch<React.SetStateAction<boolean>>;
   setSecondModal: React.Dispatch<React.SetStateAction<boolean>>;
-  handleFirstModal: (prop: string) => void;
+  handleFirstModal: (prop: string, bool: boolean) => void;
   handleSecondModal: () => void;
   firstModal: boolean;
   secondModal: boolean;
@@ -19,8 +19,8 @@ export const ModalProvider = ({ children }: IProviders) => {
   const [secondModal, setSecondModal] = useState<boolean>(false);
   const [selectedModal, setSelectedModal] = useState<string>("")
 
-  const handleFirstModal = (prop: string) => {
-    setFirstModal(!firstModal);
+  const handleFirstModal = (prop: string, bool: boolean) => {
+    setFirstModal(bool);
     setSelectedModal(prop)
   };
 

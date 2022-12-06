@@ -113,7 +113,7 @@ const EditAddressForm = ({ handleSubmit, register, errors }: any) => {
                         fontC="--grey2"
                         width="126px"
                         height="48px"
-                        onClick={() => handleFirstModal("editAddress")}
+                        onClick={() => handleFirstModal("editAddress", false)}
                         type="button"
                     >
                         Cancelar

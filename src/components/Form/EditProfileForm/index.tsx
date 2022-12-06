@@ -87,7 +87,7 @@ const EditProfileForm = ({ handleSubmit, errors, register }: any) => {
                         fontC="--grey2"
                         width="126px"
                         height="48px"
-                        onClick={() => handleFirstModal("editProfile")}
+                        onClick={() => handleFirstModal("editProfile", false)}
                         type="button"
                     >
                         Cancelar

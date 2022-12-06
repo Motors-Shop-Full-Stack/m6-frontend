@@ -14,10 +14,13 @@ import {
 import toast from "react-hot-toast";
 import axiosInstance from "../../services/api";
 import { useHistory } from "react-router-dom";
+import { useModal } from "../modal";
 
 const ApiContext = createContext<IApi>({} as IApi);
 
 export const ApiProvider = ({ children }: IApiProvider) => {
+
+  const { handleFirstModal } = useModal();
 
   const [homeData, setHomeData] = useState<IAnnouncement[]>(
     [] as IAnnouncement[]
@@ -72,10 +75,11 @@ export const ApiProvider = ({ children }: IApiProvider) => {
     await axios
       .post("http://localhost:3000/announcements/", data, config)
       .then((res) => {
-        toast.success("OK");
+        handleFirstModal('announcementSuccess', true)
         fetchUser();
       })
       .catch((error) => {
+        console.log(error)
         toast.error("ERROR");
       });
   };
@@ -100,8 +104,7 @@ export const ApiProvider = ({ children }: IApiProvider) => {
     await axios
       .post("http://localhost:3000/users/", data)
       .then((res) => {
-        toast.success("OK");
-        setIsSIgn(!false);
+        handleFirstModal('registrationSuccess', true)
       })
       .catch((error) => {
         toast.error("ERROR");

@@ -14,6 +14,7 @@ import Card from "../../components/Card";
 import { useApi } from "../../providers/api";
 import { useEffect } from "react";
 import Footer from "../../components/Footer";
+import SuccessCard from "../../components/SuccessCard";
 
 const ProfileView = () => {
   const { handleFirstModal, selectedModal } = useModal();
@@ -31,11 +32,17 @@ const ProfileView = () => {
 
   return (
     <>
-
-      {selectedModal === "createAnnouncement" ? (<Modal name="first" pTop="4%" pLeft="0%">
-        <Form name="createad" />
-      </Modal>) : (null)}
-      <Header></Header>
+      {selectedModal === "createAnnouncement" ? (
+        <Modal name="first" pTop="4%" pLeft="0%">
+          <Form name="createad" />
+        </Modal>
+      ) : (null)}
+      {selectedModal === "announcementSuccess" ? (
+        <Modal name="first" pTop="20vh" pLeft="0%">
+          <SuccessCard type={'announcement'} />
+        </Modal>
+      ) : (null)}
+      <Header />
       <GradientContainer>
         <UserBox>
           <div className="userbox-avatar">{user && getInitials(user.name)}</div>
@@ -57,7 +64,7 @@ const ProfileView = () => {
               fontC="--brand1"
               width="140px"
               height="50px"
-              onClick={() => handleFirstModal("createAnnouncement")}
+              onClick={() => handleFirstModal("createAnnouncement", true)}
             >
               Criar anuncio
             </Button>

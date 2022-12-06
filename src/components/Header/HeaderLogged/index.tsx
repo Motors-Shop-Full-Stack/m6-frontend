@@ -25,12 +25,12 @@ const HeaderLogged = ({ data }: any) => {
   const { handleFirstModal, selectedModal } = useModal();
 
   const EditProfile = () => { 
-    handleFirstModal("editProfile")
+    handleFirstModal("editProfile", true)
     setAnchorEl(null)
   }
 
   const EditAdress = () => { 
-    handleFirstModal("editAddress")
+    handleFirstModal("editAddress", true)
     setAnchorEl(null)
   }
 

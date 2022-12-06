@@ -48,7 +48,7 @@ const CreateAnnouncementForm = ({handleSubmit, register, errors}: any) => {
               fontC={"--grey4"}
               width={"15px"}
               height={"15px"}
-              onClick={() => handleFirstModal("createAnnouncement")}
+              onClick={() => handleFirstModal("createAnnouncement", false)}
             >
               x
             </Button>
@@ -225,7 +225,7 @@ const CreateAnnouncementForm = ({handleSubmit, register, errors}: any) => {
                         fontC="--grey2"
                         width="126px"
                         height="48px"
-                        onClick={() => handleFirstModal("editProfile")}
+                        onClick={() => handleFirstModal("editProfile", false)}
                         type="button"
                     >
                         Cancelar
