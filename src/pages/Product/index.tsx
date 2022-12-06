@@ -99,6 +99,7 @@ const Product = () => {
             </DescriptionContainer>
             <CommentsContainer>
               <h2>Comentários</h2>
+              {announcement && announcement.comments.length < 1 ? (<p>Ainda não há comentários</p>) : (null)}
               {announcement &&
                 announcement.comments.map((item) => {
                   return (

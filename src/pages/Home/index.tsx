@@ -4,13 +4,31 @@ import Card from "../../components/Card";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ProductList from "../../components/ProductList";
-import { BannerWrapper, ListsWrapper } from "./styles";
+import { BannerWrapper, EmptyMessage, ListsWrapper } from "./styles";
 import { useApi } from "../../providers/api";
 import { IAnnouncement } from "./interfaces";
 import { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
 
 const Home = () => {
-  const { homeData } = useApi();
+
+  const { homeData, fetchAnnouncements } = useApi();
+
+  useEffect(()=> {
+    fetchAnnouncements()
+  }, [])
+
+  const auctions = homeData.filter(item => {
+    return item.announceType === "auction"
+  })
+
+  const cars = homeData.filter(item => {
+    return item.announceType === "sale" && item.category === "car"
+  })
+
+  const bikes = homeData.filter(item => {
+    return item.announceType === "sale" && item.category === "motorcycle"
+  })
 
   return (
     <>
@@ -56,6 +74,7 @@ const Home = () => {
       </BannerWrapper>
       <ListsWrapper>
         <ProductList gap="10px" title="Leilão" id="auction">
+          {auctions.length < 1 ? (<EmptyMessage>Não há leilões no momento</EmptyMessage>) : (null)}
           {!!homeData &&
             homeData.map((item: IAnnouncement) => {
               if (item.announceType === "auction") {
@@ -70,6 +89,7 @@ const Home = () => {
             })}
         </ProductList>
         <ProductList gap="20px" title="Carros" id="cars">
+          {cars.length < 1 ? (<EmptyMessage>Nenhum carro foi anunciado</EmptyMessage>) : (null)}
           {!!homeData &&
             homeData.map((item: IAnnouncement) => {
               if (item.announceType === "sale" && item.category === "car") {
@@ -84,6 +104,7 @@ const Home = () => {
             })}
         </ProductList>
         <ProductList gap="20px" title="Motos" id="bikes">
+          {bikes.length < 1 ? (<EmptyMessage>Nenhuma moto foi anunciada</EmptyMessage>) : (null)}
           {!!homeData &&
             homeData.map((item: IAnnouncement) => {
               if (

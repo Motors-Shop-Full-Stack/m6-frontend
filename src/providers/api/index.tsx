@@ -173,6 +173,7 @@ export const ApiProvider = ({ children }: IApiProvider) => {
         isSign,
         handleEditProfile,
         fetchAnnouncement,
+        fetchAnnouncements,
         announcement,
         handleCommentPost
       }}

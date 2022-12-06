@@ -86,6 +86,7 @@ export interface IApi {
   fetchUser: () => Promise<void>;
   handleEditProfile: (data: any) => Promise<void>
   fetchAnnouncement: (id: string) => any
+  fetchAnnouncements: () => Promise<void>
   announcement: IAnnouncement | undefined
   handleCommentPost: any
 }

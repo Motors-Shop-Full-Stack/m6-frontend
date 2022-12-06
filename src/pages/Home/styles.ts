@@ -54,3 +54,11 @@ padding: 30px 0px;
 padding: 75px 0px;
 }
 `
+
+export const EmptyMessage = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100%;
+font-family: "Inter";
+`
