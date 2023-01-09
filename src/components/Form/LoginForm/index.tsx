@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useApi } from "../../../providers/api";
 import Button from "../../Button";
 import Input from "../../Input";
@@ -11,6 +10,7 @@ const LoginForm = ({ handleSubmit, register, errors }: any) => {
   const { handleLoginRequest } = useApi();
 
   const handleLogin = async (data: any) => {
+    console.log(data);
     const requestObj = {
       email: data.email,
       password: data.password,

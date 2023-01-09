@@ -10,8 +10,7 @@ interface IModalProps {
   pRight?: string;
 }
 const Modal = ({ children, name, pTop, pLeft, pRight }: IModalProps) => {
-  const { firstModal, secondModal, handleFirstModal, handleSecondModal } =
-    useModal();
+  const { firstModal, secondModal } = useModal();
 
   switch (name.toLowerCase()) {
     case "first":
@@ -20,8 +19,6 @@ const Modal = ({ children, name, pTop, pLeft, pRight }: IModalProps) => {
           {firstModal ? (
             <ModalSection>
               <ModalContainerOne pTop={pTop} pLeft={pLeft} pRight={pRight}>
-                {/* chamar as func de handle dentro dos forms  */}
-                {/* <button onClick={() => handleFirstModal()}>X</button> */}
                 {children}
               </ModalContainerOne>
             </ModalSection>
@@ -35,8 +32,6 @@ const Modal = ({ children, name, pTop, pLeft, pRight }: IModalProps) => {
           {secondModal ? (
             <ModalSection>
               <ModalContainerTwo pTop={pTop} pLeft={pLeft} pRight={pRight}>
-                {/* chamar as func de handle dentro dos forms  */}
-                {/* <button onClick={() => handleSecondModal()}>X</button> */}
                 {children}
               </ModalContainerTwo>
             </ModalSection>

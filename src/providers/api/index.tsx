@@ -13,13 +13,10 @@ import {
 } from "./interfaces";
 import toast from "react-hot-toast";
 import axiosInstance from "../../services/api";
-import { useHistory } from "react-router-dom";
 
 const ApiContext = createContext<IApi>({} as IApi);
 
 export const ApiProvider = ({ children }: IApiProvider) => {
-  const history = useHistory();
-
   const [homeData, setHomeData] = useState<IAnnouncement[]>(
     [] as IAnnouncement[]
   );
@@ -99,36 +96,37 @@ export const ApiProvider = ({ children }: IApiProvider) => {
   };
 
   const handleEditProfile = async (data: any) => {
-    
-    Object.keys(data).forEach(key => {
-      
-      if (key === 'cpf'){
-        data[key] = data[key].replaceAll(".", "").replace("-", "")
+    Object.keys(data).forEach((key) => {
+      if (key === "cpf") {
+        data[key] = data[key].replaceAll(".", "").replace("-", "");
       }
 
-      if (key === 'cep' && data[key] !== ''){
-        data[key] = data[key].replace("-", "")
-      }
-      
-      if (key === 'cel' && data[key] !== ''){
-        data[key] = data[key].replace("(", "").replace(")", "").replace("-", "")
+      if (key === "cep" && data[key] !== "") {
+        data[key] = data[key].replace("-", "");
       }
 
-      if (data[key] === '') {
+      if (key === "cel" && data[key] !== "") {
+        data[key] = data[key]
+          .replace("(", "")
+          .replace(")", "")
+          .replace("-", "");
+      }
+
+      if (data[key] === "") {
         delete data[key];
       }
     });
 
-    const id = localStorage.getItem("motorshop-id")
+    const id = localStorage.getItem("motorshop-id");
     await axiosInstance
       .patch(`http://localhost:3000/users/${id}`, data)
       .then((res) => {
         toast.success("OK");
-        fetchUser()
+        fetchUser();
       })
       .catch((error) => {
         toast.error("ERROR");
-        console.log(error)
+        console.log(error);
       });
   };
 
@@ -144,7 +142,7 @@ export const ApiProvider = ({ children }: IApiProvider) => {
         setUser,
         fetchUser,
         isSign,
-        handleEditProfile
+        handleEditProfile,
       }}
     >
       {children}

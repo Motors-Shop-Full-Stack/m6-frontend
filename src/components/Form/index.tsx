@@ -1,15 +1,20 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IFormProps, IUseFormProps} from "./interfaces";
+import { IFormProps, IUseFormProps } from "./interfaces";
 import LoginForm from "./LoginForm";
 import CreateAnnouncementForm from "./CreateAnnouncementForm";
-import { createdAdSchema, editAddressSchema, editProfileSchema, loginSchema, registerSchema } from "./schemas";
 import RegistrationForm from "./RegistrationForm";
 import EditProfileForm from "./EditProfileForm";
 import EditAdressForm from "./EditAddressForm";
+import {
+  createdAdSchema,
+  editAddressSchema,
+  editProfileSchema,
+  loginSchema,
+  registerSchema,
+} from "./schemas";
 
 const Form = ({ name }: IFormProps) => {
-
   const {
     register,
     handleSubmit,
@@ -30,22 +35,51 @@ const Form = ({ name }: IFormProps) => {
     ),
   });
 
-
   switch (name.toLowerCase()) {
     case "login":
-      return <LoginForm handleSubmit={handleSubmit} errors={errors} register={register} />
+      return (
+        <LoginForm
+          handleSubmit={handleSubmit}
+          errors={errors}
+          register={register}
+        />
+      );
 
     case "createad":
-      return <CreateAnnouncementForm handleSubmit={handleSubmit} errors={errors} register={register} />
+      return (
+        <CreateAnnouncementForm
+          handleSubmit={handleSubmit}
+          errors={errors}
+          register={register}
+        />
+      );
 
     case "register":
-      return <RegistrationForm handleSubmit={handleSubmit} errors={errors} register={register} />
+      return (
+        <RegistrationForm
+          handleSubmit={handleSubmit}
+          errors={errors}
+          register={register}
+        />
+      );
 
     case "editprofile":
-      return <EditProfileForm handleSubmit={handleSubmit} errors={errors} register={register} />
+      return (
+        <EditProfileForm
+          handleSubmit={handleSubmit}
+          errors={errors}
+          register={register}
+        />
+      );
 
-    case "editaddress": 
-      return <EditAdressForm handleSubmit={handleSubmit} errors={errors} register={register} />
+    case "editaddress":
+      return (
+        <EditAdressForm
+          handleSubmit={handleSubmit}
+          errors={errors}
+          register={register}
+        />
+      );
 
     default:
       return null;
